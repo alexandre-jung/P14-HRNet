@@ -1,0 +1,42 @@
+{
+  "name": "@alexandre-jung/hrnet-icons",
+  "version": "0.0.0",
+  "description": "React icon components for the HRNet application",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist src",
+    "build": "pnpm run clean && svgr assets/ && rollup -c",
+    "dev": "pnpm build"
+  },
+  "keywords": [
+    "React",
+    "Icons",
+    "SVG"
+  ],
+  "author": "Alexandre Jung",
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@svgr/cli": "^6.5.1",
+    "@types/react": "^18.0.27",
+    "glob": "^8.1.0",
+    "rimraf": "^4.1.2",
+    "rollup": "^3.13.0",
+    "rollup-plugin-dts": "^5.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "hrnet-front",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@alexandre-jung/hrnet-icons": "workspace:*",
+    "@alexandre-jung/hrnet-ui": "workspace:*",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^4.1.2",
+    "sass": "^1.58.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-svgr": "^2.4.0"
+  }
+}
