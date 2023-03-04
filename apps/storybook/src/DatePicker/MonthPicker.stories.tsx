@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { MonthPicker } from '@alexandre-jung/date-picker';
+import { MonthPicker } from '@hrnet-aj/date-picker';
 
 export default {
   title: 'date-picker/MonthPicker',

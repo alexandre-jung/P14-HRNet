@@ -1,4 +1,4 @@
-import { Calendar } from '@alexandre-jung/hrnet-icons';
+import { Calendar } from '@hrnet-aj/icons';
 import styles from './App.module.scss';
 
 function App () {

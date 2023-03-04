@@ -1,7 +1,7 @@
 {
   "name": "hrnet-front",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "clean": "rimraf dist",
@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@alexandre-jung/date-picker": "workspace:*",
-    "@alexandre-jung/hrnet-icons": "workspace:*",
-    "@alexandre-jung/hrnet-ui": "workspace:*",
+    "@hrnet-aj/date-picker": "workspace:*",
+    "@hrnet-aj/icons": "workspace:*",
+    "@hrnet-aj/ui": "workspace:*",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",

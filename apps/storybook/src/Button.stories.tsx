@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Button } from '@alexandre-jung/hrnet-ui';
+import { Button } from '@hrnet-aj/ui';
 
 export default {
   title: 'ui/Button',
