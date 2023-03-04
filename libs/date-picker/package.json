@@ -1,6 +1,6 @@
 {
-  "name": "@alexandre-jung/date-picker",
-  "version": "0.0.0",
+  "name": "@hrnet-aj/date-picker",
+  "version": "0.0.1",
   "description": "React date picker component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,8 +11,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "pnpm run clean && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest"
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "React"
@@ -23,7 +22,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@alexandre-jung/hrnet-icons": "workspace:*",
+    "@hrnet-aj/icons": "workspace:*",
     "tslib": "^2.5.0"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-# @hrnet-aj/icons
+# hrnet-front
 
 ## 0.0.1
 

@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import * as icons from '@alexandre-jung/hrnet-icons';
-import { Calendar } from '@alexandre-jung/hrnet-icons';
+import * as icons from '@hrnet-aj/icons';
+import { Calendar } from '@hrnet-aj/icons';
 
 export default {
   title: 'icons/Icons',

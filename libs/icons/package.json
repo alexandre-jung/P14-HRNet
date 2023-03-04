@@ -1,6 +1,6 @@
 {
-  "name": "@alexandre-jung/hrnet-icons",
-  "version": "0.0.0",
+  "name": "@hrnet-aj/icons",
+  "version": "0.0.1",
   "description": "React icon components for the HRNet application",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

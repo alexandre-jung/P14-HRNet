@@ -1,7 +1,7 @@
 {
   "name": "hrnet-storybook",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "clean": "rimraf storybook-static",
@@ -10,9 +10,9 @@
     "preview": "pnpx live-server storybook-static"
   },
   "devDependencies": {
-    "@alexandre-jung/date-picker": "workspace:*",
-    "@alexandre-jung/hrnet-icons": "workspace:*",
-    "@alexandre-jung/hrnet-ui": "workspace:*",
+    "@hrnet-aj/date-picker": "workspace:*",
+    "@hrnet-aj/icons": "workspace:*",
+    "@hrnet-aj/ui": "workspace:*",
     "@babel/core": "^7.20.12",
     "@mdx-js/react": "^2.3.0",
     "@storybook/addon-actions": "^6.5.16",
