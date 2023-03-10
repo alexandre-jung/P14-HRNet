@@ -1,10 +1,4 @@
-import { ReactNode } from 'react';
-
-export interface SideControlsProps {
-  children: ReactNode,
-  onPrevious: () => void;
-  onNext: () => void;
-}
+import { SideControlsProps } from './SideControls.types';
 
 export default function SideControls ({
   children,
