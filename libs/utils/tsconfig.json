@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    "target": "ES2015",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "emitDeclarationOnly": true,
+    "noImplicitAny": false,
+    "types": [
+      "jest",
+      "react"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "jest/setupTests.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "jest/setupTests.ts",
+    "**/*/*.test.tsx"
+  ]
+}
