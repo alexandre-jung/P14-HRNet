@@ -1,14 +1,16 @@
 import { ChangeEventHandler } from 'react';
 
 import { MonthPickerProps } from './MonthPicker.types';
-import MonthOptions from './MonthOptions';
-import SideControls from './SideControls';
+import MonthOptions from '../MonthOptions';
+import SideControls from '../SideControls';
 import {
   createNextAction,
   createPreviousAction,
   createSetAction,
   useMonthReducer,
 } from './reducer';
+
+import styles from './style.module.scss';
 
 export default function MonthPicker ({
   defaultValue = 0,
@@ -50,6 +52,7 @@ export default function MonthPicker ({
       onNext={handleNext}
     >
       <select
+        className={styles.MonthPickerSelect}
         value={currentIndex}
         onChange={handleChange}
         {...otherProps}

@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import '@hrnet-aj/ui/dist/index.css';
+import '@hrnet-aj/date-picker/dist/index.css';
 import './assets/index.scss';
 
 import App from './components/App';
