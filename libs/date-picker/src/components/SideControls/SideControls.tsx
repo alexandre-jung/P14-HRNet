@@ -1,4 +1,9 @@
+import { CaretLeft, CaretRight } from '@hrnet-aj/icons';
 import { SideControlsProps } from './SideControls.types';
+
+import styles from './styles.module.scss';
+
+const CARET_SIZE = 20;
 
 export default function SideControls ({
   children,
@@ -6,10 +11,26 @@ export default function SideControls ({
   onNext,
 }: SideControlsProps) {
   return (
-    <>
-      <button onClick={onPrevious}>&lt;</button>
+    <div className={styles.container}>
+      <button
+        className={styles.button}
+        onClick={onPrevious}
+      >
+        <CaretLeft
+          width={CARET_SIZE}
+          height={CARET_SIZE}
+        />
+      </button>
       {children}
-      <button onClick={onNext}>&gt;</button>
-    </>
+      <button
+        className={styles.button}
+        onClick={onNext}
+      >
+        <CaretRight
+          width={CARET_SIZE}
+          height={CARET_SIZE}
+        />
+      </button>
+    </div>
   );
 }

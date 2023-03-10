@@ -57,7 +57,7 @@ export default function MonthPicker ({
         onChange={handleChange}
         {...otherProps}
       >
-        <MonthOptions />
+        <MonthOptions locale="fr" />
       </select>
     </SideControls>
   );
