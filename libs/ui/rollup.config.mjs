@@ -12,7 +12,7 @@ const MODE = 'prod';
 const externalModules = [
   'jest',
   'tslib',
-  '@alexandre-jung/hrnet-icons',
+  '@hrnet-aj/icons',
 ];
 
 /**
