@@ -1,10 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { cycle } from '@hrnet-aj/utils';
 
 import { YearMonthPickerProps } from './YearMonthPicker.types';
 import MonthPicker, { MonthPickerChangeEvent } from '../MonthPicker';
-import YearOptions from '../YearOptions';
+import YearPicker from '../YearPicker';
 
 import styles from './styles.module.scss';
 
@@ -24,10 +24,10 @@ export default function YearMonthPicker ({
   const isControlled = !!value;
   const actualValue = isControlled ? value : currentValue;
 
-  const handleYearChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleYearChange = (year: number) => {
     const newValue = {
       ...actualValue,
-      year: Number.parseInt(event.target.value),
+      year,
     };
     if (!isControlled) {
       setCurrentValue(newValue);
@@ -64,16 +64,12 @@ export default function YearMonthPicker ({
         value={actualValue.month}
         onChange={handleMonthChange}
       />
-      <select
-        className={styles.yearSelect}
+      <YearPicker
         value={actualValue.year}
         onChange={handleYearChange}
-      >
-        <YearOptions
-          start={startYear}
-          end={endYear}
-        />
-      </select>
+        startYear={startYear}
+        endYear={endYear}
+      />
     </div>
   );
 }
