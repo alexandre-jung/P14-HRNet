@@ -1,16 +1,9 @@
-import { ChangeEventHandler } from 'react';
-
 import { MonthPickerProps } from './MonthPicker.types';
 import MonthOptions from '../MonthOptions';
 import SideControls from '../SideControls';
-import {
-  createNextAction,
-  createPreviousAction,
-  createSetAction,
-  useMonthReducer,
-} from './reducer';
 
 import styles from './style.module.scss';
+import { useMonthPicker } from './hooks';
 
 export default function MonthPicker ({
   defaultValue = 0,
@@ -18,43 +11,17 @@ export default function MonthPicker ({
   onChange,
   ...otherProps
 }: MonthPickerProps) {
-  const isControlled = value !== undefined;
-
-  const [state, dispatch] = useMonthReducer(
-    value,
-    defaultValue,
-    (event) => onChange?.(event),
-  );
-
-  const handlePrevious = () => {
-    const action = createPreviousAction(value ?? 0);
-    dispatch(action);
-  };
-
-  const handleNext = () => {
-    const action = createNextAction(value ?? 0);
-    dispatch(action);
-  };
-
-  const handleChange: ChangeEventHandler<HTMLSelectElement> = ({ currentTarget }) => {
-    const value = Number.parseInt(currentTarget.value);
-    const action = createSetAction(value);
-    dispatch(action);
-  };
-
-  const currentIndex = isControlled ?
-    Math.min(Math.max(value, 0), 11) :
-    state.currentIndex;
+  const api = useMonthPicker(defaultValue, value, onChange);
 
   return (
     <SideControls
-      onPrevious={handlePrevious}
-      onNext={handleNext}
+      onPrevious={api.handlePrevious}
+      onNext={api.handleNext}
     >
       <select
         className={styles.MonthPickerSelect}
-        value={currentIndex}
-        onChange={handleChange}
+        value={api.current}
+        onChange={api.handleChange}
         {...otherProps}
       >
         <MonthOptions locale="fr" />
