@@ -7,8 +7,9 @@ export type MonthPickerProps = Omit<JSX.IntrinsicElements['select'], 'defaultVal
 export type MonthPickerChangeEventHandler = (event: MonthPickerChangeEvent) => void;
 
 export interface MonthPickerChangeEvent {
-  type: 'set' | 'previous' | 'next';
-  monthName: string;
-  monthIndex: number;
+  type: MonthPickerChangeEventType;
+  current: number;
   wrapped: boolean;
 }
+
+export type MonthPickerChangeEventType = 'set' | 'previous' | 'next'

@@ -13,6 +13,7 @@ const externalModules = [
   'jest',
   'tslib',
   '@hrnet-aj/icons',
+  '@hrnet-aj/utils',
 ];
 
 /**

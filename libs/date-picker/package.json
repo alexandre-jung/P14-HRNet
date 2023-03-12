@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "@hrnet-aj/icons": "workspace:*",
+    "@hrnet-aj/utils": "workspace:*",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
