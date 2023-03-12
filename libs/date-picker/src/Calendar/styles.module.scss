@@ -1,0 +1,56 @@
+.Calendar {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  user-select: none;
+}
+
+.header {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: bold;
+
+  .item {
+    color: white;
+    background-color: #343434;
+    font-size: 0.7rem;
+    vertical-align: bottom;
+    width: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+.body {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  .item {
+    font-size: 0.7rem;
+    font-weight: 500;
+    width: 2.5rem;
+    line-height: 2.5rem;
+
+    transition: background-color 50ms ease-in-out;
+
+    &.active {
+      color: white;
+      background-color: #646cff;
+    }
+
+    &.dimmed {
+      opacity: 0.3;
+      background-color: transparent;
+    }
+
+    &:hover {
+      opacity: 1;
+      background-color: #e0e1ff;
+    }
+  }
+}
