@@ -9,12 +9,15 @@ export default function SideControls ({
   children,
   onPrevious,
   onNext,
+  previousDisabled,
+  nextDisabled,
 }: SideControlsProps) {
   return (
     <div className={styles.container}>
       <button
         className={styles.button}
         onClick={onPrevious}
+        disabled={previousDisabled}
       >
         <CaretLeft
           width={CARET_SIZE}
@@ -25,6 +28,7 @@ export default function SideControls ({
       <button
         className={styles.button}
         onClick={onNext}
+        disabled={nextDisabled}
       >
         <CaretRight
           width={CARET_SIZE}

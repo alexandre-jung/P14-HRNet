@@ -47,6 +47,7 @@ importers:
       '@hrnet-aj/date-picker': workspace:*
       '@hrnet-aj/icons': workspace:*
       '@hrnet-aj/ui': workspace:*
+      '@hrnet-aj/utils': workspace:*
       '@mdx-js/react': ^2.3.0
       '@storybook/addon-actions': ^6.5.16
       '@storybook/addon-essentials': ^6.5.16
@@ -71,6 +72,7 @@ importers:
       '@hrnet-aj/date-picker': link:../../libs/date-picker
       '@hrnet-aj/icons': link:../../libs/icons
       '@hrnet-aj/ui': link:../../libs/ui
+      '@hrnet-aj/utils': link:../../libs/utils
       '@mdx-js/react': 2.3.0_react@18.2.0
       '@storybook/addon-actions': 6.5.16_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-essentials': 6.5.16_gmku2bus3tzv3jgtkcfvoxq6za

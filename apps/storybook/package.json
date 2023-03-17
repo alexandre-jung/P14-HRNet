@@ -13,6 +13,7 @@
     "@hrnet-aj/date-picker": "workspace:*",
     "@hrnet-aj/icons": "workspace:*",
     "@hrnet-aj/ui": "workspace:*",
+    "@hrnet-aj/utils": "workspace:*",
     "@babel/core": "^7.20.12",
     "@mdx-js/react": "^2.3.0",
     "@storybook/addon-actions": "^6.5.16",

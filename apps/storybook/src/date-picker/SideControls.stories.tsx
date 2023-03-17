@@ -19,6 +19,4 @@ const Template: ComponentStory<typeof SideControls> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-};
 Default.storyName = 'SideControls';
