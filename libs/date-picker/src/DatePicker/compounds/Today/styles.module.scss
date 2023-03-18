@@ -1,0 +1,15 @@
+.Today {
+  display: inline-block;
+  padding: 3px;
+  line-height: 0;
+  color: black;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 150ms ease-in-out;
+
+  &:not(:hover) {
+    opacity: 0.5;
+  }
+}

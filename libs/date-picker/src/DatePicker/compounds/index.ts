@@ -5,6 +5,7 @@ import YearControls from './YearControls';
 import MonthControls from './MonthControls';
 import YearSelect from './YearSelect';
 import MonthSelect from './MonthSelect';
+import Today from './Today';
 
 export default {
   Calendar,
@@ -14,4 +15,5 @@ export default {
   MonthControls,
   YearSelect,
   MonthSelect,
+  Today,
 };

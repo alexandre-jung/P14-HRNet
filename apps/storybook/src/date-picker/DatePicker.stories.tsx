@@ -42,6 +42,8 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
             marginBottom: 15,
           }}
         >
+          <DatePicker.Today />
+
           <DatePicker.MonthControls>
             <DatePicker.MonthSelect />
           </DatePicker.MonthControls>
