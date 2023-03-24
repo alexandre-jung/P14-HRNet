@@ -11,7 +11,14 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: [['date-picker', 'icons', 'ui']],
+      order: [
+        [
+          'date-picker',
+          'icons',
+          'modal',
+          'ui',
+        ],
+      ],
     },
   },
 };

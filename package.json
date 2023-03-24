@@ -11,6 +11,7 @@
     "clean": "turbo clean --no-daemon",
     "dev:front": "turbo --filter=./libs/* --filter=hrnet-front dev --no-daemon",
     "dev:storybook": "turbo --filter=./libs/* --filter=hrnet-storybook dev --no-daemon",
+    "dev:modal": "pnpm --filter=@hrnet-aj/modal dev-standalone",
     "preview:front": "turbo --filter=hrnet-front preview --no-daemon",
     "preview:storybook": "turbo --filter=hrnet-storybook preview --no-daemon",
     "publish-packages": "turbo build test --no-daemon && changeset version && changeset publish",

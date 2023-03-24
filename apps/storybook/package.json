@@ -12,6 +12,7 @@
   "devDependencies": {
     "@hrnet-aj/date-picker": "workspace:*",
     "@hrnet-aj/icons": "workspace:*",
+    "@hrnet-aj/modal": "workspace:*",
     "@hrnet-aj/ui": "workspace:*",
     "@hrnet-aj/utils": "workspace:*",
     "@babel/core": "^7.20.12",

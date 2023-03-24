@@ -1,0 +1,72 @@
+.Layer {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  padding: 0;
+}
+
+/* Flex center and overflow issues: https://stackoverflow.com/a/33455342 */
+.Modal {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  padding: 100px;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.ModalHeader {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ModalTitle {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.closeButton {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  opacity: 0.5;
+  border-radius: 4px;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  opacity: 1;
+  outline: 2px solid black;
+}
+
+.closeButtonContainer {
+  margin-left: auto;
+  padding-left: 20px;
+}
+
+.ModalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ececec;
+  margin: auto;
+  border-radius: 5px;
+  width: 500px !important;
+  opacity: 0 !important;
+  transition: opacity 150ms !important;
+}
+
+.Modal:last-child {
+  overflow: auto;
+}
+
+.Modal:last-child .ModalBody {
+  opacity: 1 !important;
+}
