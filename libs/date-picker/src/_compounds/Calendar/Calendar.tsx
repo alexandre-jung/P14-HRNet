@@ -2,16 +2,23 @@ import { useMemo } from 'react';
 
 import { range } from '@hrnet-aj/utils';
 
+import { useDatePicker } from '../../DatePicker';
 import CalendarHeader from './CalendarHeader';
-import { getLastDayOfMonth, mapWeekDayToSundayLast } from './utils';
+import { getLastDayOfMonth, mapWeekDayToSundayLast } from '../../utils';
 
 import styles from './styles.module.scss';
-import { useDatePicker } from '../../Context';
 
 const LINES_TO_DISPLAY = 6;
 
 export default function Calendar () {
-  const { date: { year, month } } = useDatePicker();
+  const {
+    date: {
+      year,
+      month,
+      day: currentDay,
+    },
+    api,
+  } = useDatePicker();
 
   const lastDayOfMonth = useMemo(
     () => getLastDayOfMonth(year, month),
@@ -40,14 +47,18 @@ export default function Calendar () {
           <li
             className={`${styles.item} ${styles.dimmed}`}
             key={day}
+            onClick={() => {
+
+            }}
           >
             {lastDayOfPrevious + day}
           </li>
         )) : null}
         {days.map(day => (
           <li
-            className={styles.item}
+            className={`${styles.item} ${day == currentDay ? styles.active : ''}`}
             key={day}
+            onClick={() => api.setDate({ year, month, day })}
           >
             {day}
           </li>
@@ -56,6 +67,14 @@ export default function Calendar () {
           <li
             className={`${styles.item} ${styles.dimmed}`}
             key={day}
+            onClick={() => {
+              const d = new Date(year, month + 1, day);
+              api.setDate({
+                year: d.getFullYear(),
+                month: d.getMonth(),
+                day: d.getDate(),
+              });
+            }}
           >
             {day}
           </li>

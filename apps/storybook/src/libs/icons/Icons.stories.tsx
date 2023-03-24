@@ -5,7 +5,7 @@ import * as icons from '@hrnet-aj/icons';
 import { Calendar } from '@hrnet-aj/icons';
 
 export default {
-  title: 'icons/Icons',
+  title: 'libs/icons',
   component: Object.values(icons)[0],
   parameters: {
     layout: 'padded',
@@ -51,4 +51,4 @@ Default.args = {
   width: 24,
   height: 24,
 };
-Default.storyName = 'Icons';
+Default.storyName = 'icons';

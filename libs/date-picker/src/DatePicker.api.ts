@@ -1,5 +1,7 @@
-import { Date, Meta } from './DatePicker.types';
 import { clamp, cycle } from '@hrnet-aj/utils';
+
+import { Date, Meta } from './DatePicker.types';
+import { limitDayForCurrentMonth } from './utils';
 
 type ApiFunction = (
   date: Date,
@@ -14,7 +16,7 @@ const computePreviousYear: ApiFunction = (date, meta, callback) => {
       ...date,
       year: clamp(date.year - 1, meta.minYear, meta.maxYear),
     };
-    if (!Object.is(newDate, date)) callback(newDate);
+    callback(limitDayForCurrentMonth(newDate));
   }
 };
 
@@ -25,7 +27,7 @@ const computeNextYear: ApiFunction = (date, meta, callback) => {
       ...date,
       year: clamp(date.year + 1, meta.minYear, meta.maxYear),
     };
-    if (!Object.is(newDate, date)) callback(newDate);
+    callback(limitDayForCurrentMonth(newDate));
   }
 };
 
@@ -35,7 +37,7 @@ const computePreviousMonth: ApiFunction = (date, meta, callback) => {
     const month = cycle(date.month - 1, 0, 11);
     const year = date.year - (month == 11 ? 1 : 0);
     const newDate = { ...date, year, month };
-    if (!Object.is(newDate, date)) callback(newDate);
+    callback(limitDayForCurrentMonth(newDate));
   }
 };
 
@@ -45,7 +47,7 @@ const computeNextMonth: ApiFunction = (date, meta, callback) => {
     const month = cycle(date.month + 1, 0, 11);
     const year = date.year + (month == 0 ? 1 : 0);
     const newDate = { ...date, year, month };
-    if (!Object.is(newDate, date)) callback(newDate);
+    callback(limitDayForCurrentMonth(newDate));
   }
 };
 

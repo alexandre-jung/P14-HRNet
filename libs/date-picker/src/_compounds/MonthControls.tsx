@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import SideControls from '../../SideControls';
-import { useDatePicker } from '../Context';
+import { useDatePicker } from '../DatePicker';
+import SideControls from './SideControls';
 
 interface MonthControlsProps {
   children: ReactNode;

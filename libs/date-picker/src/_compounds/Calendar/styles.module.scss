@@ -38,11 +38,6 @@
 
     transition: background-color 50ms ease-in-out;
 
-    &.active {
-      color: white;
-      background-color: #646cff;
-    }
-
     &.dimmed {
       opacity: 0.3;
       background-color: transparent;
@@ -51,6 +46,11 @@
     &:hover {
       opacity: 1;
       background-color: #e0e1ff;
+    }
+
+    &.active {
+      color: white;
+      background-color: #646cff;
     }
   }
 }

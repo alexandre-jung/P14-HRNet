@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 
-import { useDatePicker } from '../../Context';
-import MonthOptions from '../../../MonthOptions';
+import { useDatePicker } from '../../DatePicker';
+import MonthOptions from './MonthOptions';
 
 import styles from './style.module.scss';
 

@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 
 import { range } from '@hrnet-aj/utils';
 
-import { useDatePicker } from '../../Context';
+import { useDatePicker } from '../../DatePicker';
 
 import styles from './styles.module.scss';
 

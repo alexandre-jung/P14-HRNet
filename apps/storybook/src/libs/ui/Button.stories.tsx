@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from '@hrnet-aj/ui';
 
 export default {
-  title: 'ui/Button',
+  title: 'libs/ui/Button',
   component: Button,
   parameters: {
     layout: 'padded',

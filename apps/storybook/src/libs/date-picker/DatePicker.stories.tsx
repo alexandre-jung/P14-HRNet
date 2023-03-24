@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
-import { DatePicker } from '@hrnet-aj/date-picker';
+import DatePicker, { Date } from '@hrnet-aj/date-picker';
 import { clamp } from '@hrnet-aj/utils';
 
 export default {
-  title: 'date-picker/DatePicker',
+  title: 'libs/date-picker',
   component: DatePicker,
   parameters: {
     layout: 'padded',
   },
-  argTypes: {
-    onChange: { action: 'changed' },
-  },
 } as ComponentMeta<typeof DatePicker>;
+
+const changedAction = action('changed');
 
 const Template: ComponentStory<typeof DatePicker> = (args) => {
   const [date, setDate] = useState({
@@ -21,6 +21,11 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
     month: 0,
     day: 12,
   });
+
+  const handleChange = (date: Date) => {
+    changedAction(date);
+    setDate(date);
+  };
 
   const validDate = {
     ...date,
@@ -32,7 +37,7 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
       <DatePicker
         {...args}
         date={validDate}
-        onChange={setDate}
+        onChange={handleChange}
       >
         <div
           style={{
@@ -65,4 +70,4 @@ Default.args = {
   minYear: 1980,
   maxYear: 2030,
 };
-Default.storyName = 'DatePicker';
+Default.storyName = 'date-picker';

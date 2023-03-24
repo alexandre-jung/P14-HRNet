@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { getWeekdays } from './utils';
+import { getWeekdays } from '../../utils';
 
 const weekdays = getWeekdays('fr', 'short');
 

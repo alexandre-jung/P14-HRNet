@@ -1,4 +1,10 @@
 import { range } from '@hrnet-aj/utils';
+import { Date } from './DatePicker.types';
+
+export function limitDayForCurrentMonth (date: Date) {
+  const lastOfMonth = getLastDayOfMonth(date.year, date.month);
+  return { ...date, day: Math.min(date.day, lastOfMonth) };
+}
 
 export function mapWeekDayToSundayLast (weekDaySundayFirst: number) {
   return (weekDaySundayFirst + 6) % 7;

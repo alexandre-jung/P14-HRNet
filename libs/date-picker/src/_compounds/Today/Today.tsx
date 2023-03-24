@@ -1,6 +1,6 @@
 import { House } from '@hrnet-aj/icons';
 
-import { useDatePicker } from '../../Context';
+import { useDatePicker } from '../../DatePicker';
 
 import styles from './styles.module.scss';
 
@@ -22,8 +22,8 @@ export default function Today () {
       onClick={handleClick}
     >
       <House
-        width={20}
-        height={20}
+        width={18}
+        height={18}
       />
     </button>
   );

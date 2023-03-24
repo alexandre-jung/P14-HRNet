@@ -1,4 +1,4 @@
-import { useDatePicker } from '../Context';
+import { useDatePicker } from '../DatePicker';
 
 export default function Month () {
   const { date } = useDatePicker();
