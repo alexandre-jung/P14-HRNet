@@ -12,6 +12,7 @@
   "devDependencies": {
     "@hrnet-aj/date-picker": "workspace:*",
     "@hrnet-aj/icons": "workspace:*",
+    "@hrnet-aj/modal": "workspace:*",
     "@hrnet-aj/ui": "workspace:*",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
