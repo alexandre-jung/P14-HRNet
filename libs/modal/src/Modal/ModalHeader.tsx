@@ -1,7 +1,7 @@
 import React, { CSSProperties, MouseEvent } from 'react';
 
 import css from './styles.module.css';
-import { useModalContext } from './Modal';
+import { useModalContext } from './index';
 
 export type ModalHeaderProps = JSX.IntrinsicElements['header'] & {
   closeButton?: boolean,

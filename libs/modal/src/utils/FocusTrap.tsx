@@ -41,7 +41,7 @@ function getTabHandler (focusableEnds: FocusableEndElements) {
   };
 }
 
-export default function FocusTrap ({ children, ...props }: Omit<JSX.IntrinsicElements['div'], 'onKeyDownCapture'>) {
+export function FocusTrap ({ children, ...props }: Omit<JSX.IntrinsicElements['div'], 'onKeyDownCapture'>) {
   const trapElementRef = useRef<HTMLDivElement>(null);
   const focusableEndElementsRef = useRef<FocusableEndElements>({ first: null, last: null });
   const intersectionObserverRef = useRef<IntersectionObserver | null>(null);

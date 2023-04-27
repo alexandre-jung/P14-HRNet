@@ -1,32 +1,8 @@
-import React, { createContext, ReactNode, useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './styles.module.css';
-import { prefersReducedMotion } from './AnimatedDiv/utils';
-
-const Context = createContext<any>(null);
-
-export function useLayer (show?: boolean) {
-  const value = useContext(Context);
-
-  if (!value) {
-    throw new Error('Modal can only be rendered as child of Layer');
-  }
-
-  const renderInLayer = (children: ReactNode) => {
-    return <>
-      {show && createPortal(
-        children,
-        value.layerElement,
-      )}
-    </>;
-  };
-
-  return {
-    ...value,
-    renderInLayer,
-  };
-}
+import { prefersReducedMotion } from '../AnimatedDiv/utils';
+import { LayerProvider } from './context';
 
 type AnimationState = {
   animation?: Animation | null;
@@ -135,15 +111,15 @@ export function Layer ({ children, id }: { children: ReactNode, id: string }) {
   }, [hasConsumers()]);
 
   return (
-    <Context.Provider
-      value={{
-        layerElement,
-        register,
-        unregister,
-        lastRegisteredId,
-      }}
+    <LayerProvider
+      layerElement={layerElement}
+      register={register}
+      unregister={unregister}
+      lastRegisteredId={lastRegisteredId}
     >
       {children}
-    </Context.Provider>
+    </LayerProvider>
   );
 }
+
+export { useLayer } from './context';

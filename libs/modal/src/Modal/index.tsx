@@ -10,10 +10,10 @@ import React, {
   useState,
 } from 'react';
 
-import { useLayer } from './Layer';
-import AnimatedDiv from './AnimatedDiv';
+import { useLayer } from '../Layer';
+import AnimatedDiv from '../AnimatedDiv';
 import ModalHeader from './ModalHeader';
-import FocusTrap from './FocusTrap';
+import { FocusTrap } from '../utils';
 
 import styles from './styles.module.css';
 
