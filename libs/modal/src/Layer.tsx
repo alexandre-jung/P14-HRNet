@@ -110,7 +110,6 @@ export function Layer ({ children, id }: { children: ReactNode, id: string }) {
         createAnimation();
         document.body.style.top = `-${window.scrollY}px`;
         document.body.style.position = 'fixed';
-        document.body.style.inset = '0';
       } else {
         const isRunningBackwards = !animationState.current.isRunningForward;
         if (isRunningBackwards) {

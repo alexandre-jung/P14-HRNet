@@ -58,7 +58,7 @@
   background-color: #ececec;
   margin: auto;
   border-radius: 5px;
-  width: 500px !important;
+  max-width: 500px !important;
   opacity: 0 !important;
   transition: opacity 150ms !important;
 }
