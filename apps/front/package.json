@@ -14,6 +14,7 @@
     "@hrnet-aj/icons": "workspace:*",
     "@hrnet-aj/modal": "workspace:*",
     "@hrnet-aj/ui": "workspace:*",
+    "@hrnet-aj/utils": "workspace:*",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
