@@ -14,6 +14,7 @@ const externalModules = [
   'tslib',
   '@hrnet-aj/icons',
   '@hrnet-aj/utils',
+  '@floating-ui/react',
 ];
 
 /**
