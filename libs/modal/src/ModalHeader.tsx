@@ -1,11 +1,23 @@
-import React, { MouseEvent } from 'react';
+import React, { CSSProperties, MouseEvent } from 'react';
 
-import styles from './styles.module.css';
+import css from './styles.module.css';
 import { useModalContext } from './Modal';
 
-export type ModalHeaderProps = JSX.IntrinsicElements['header'] & { closeButton?: boolean };
+export type ModalHeaderProps = JSX.IntrinsicElements['header'] & {
+  closeButton?: boolean,
+  classNames?: { closeButton?: string },
+  style?: CSSProperties,
+  styles?: { closeButton?: CSSProperties }
+};
 
-export default function ModalHeader ({ children, closeButton, ...props }: ModalHeaderProps) {
+export default function ModalHeader ({
+  children,
+  closeButton,
+  className = '',
+  classNames,
+  styles,
+  ...props
+}: ModalHeaderProps) {
   const { onClose } = useModalContext();
   const handleClose = (event: MouseEvent) => {
     event.preventDefault();
@@ -14,16 +26,17 @@ export default function ModalHeader ({ children, closeButton, ...props }: ModalH
   };
 
   return (
-    <header {...props} className={styles.ModalHeader}>
-      <h1 className={styles.ModalTitle}>
+    <header {...props} className={`${css.ModalHeader} ${className}`}>
+      <h1 className={css.ModalTitle}>
         {children}
       </h1>
       {
         closeButton && (
-          <div className={styles.closeButtonContainer}>
+          <div className={css.closeButtonContainer}>
             <button
-              className={styles.closeButton}
+              className={`${css.closeButton} ${classNames?.closeButton ?? ''}`}
               onClick={handleClose}
+              style={styles?.closeButton}
             >
               X
             </button>

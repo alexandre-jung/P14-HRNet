@@ -18,6 +18,10 @@
   scrollbar-gutter: stable;
 }
 
+.Modal.centered {
+  display: flex;
+}
+
 .ModalHeader {
   display: flex;
   align-items: flex-start;

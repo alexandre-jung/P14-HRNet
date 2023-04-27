@@ -1,5 +1,6 @@
 import React, {
   createContext,
+  CSSProperties,
   KeyboardEvent,
   ReactNode,
   useCallback,
@@ -22,12 +23,24 @@ export function useModalContext () {
   return useContext(Context);
 }
 
-function Modal ({ children, show, id, close, onClose }: {
+function Modal ({
+  children,
+  show,
+  id,
+  close,
+  onClose,
+  centered,
+  className = '',
+  style,
+}: {
   children: ReactNode,
   show?: boolean,
   id: string,
   close?: boolean,
-  onClose?: () => void
+  onClose?: () => void,
+  centered?: boolean,
+  className?: string,
+  style?: CSSProperties,
 }) {
   const [actualShow, setActualShow] = useState(show);
   const { renderInLayer, register, unregister } = useLayer(actualShow);
@@ -63,7 +76,7 @@ function Modal ({ children, show, id, close, onClose }: {
 
   return renderInLayer(
     <div
-      className={styles.Modal}
+      className={`${styles.Modal} ${centered ? styles.centered : ''}`}
       id={id}
       onKeyDown={handleEscapeKey}
       role="dialog"
@@ -80,8 +93,12 @@ function Modal ({ children, show, id, close, onClose }: {
       <AnimatedDiv
         show={show}
         onExitFinish={() => setActualShow(false)}
+        style={{ margin: 'auto' }}
       >
-        <FocusTrap className={styles.ModalBody}>
+        <FocusTrap
+          className={`${styles.ModalBody} ${className}`}
+          style={style}
+        >
           <Context.Provider value={{ onClose: onClose ?? (() => {}) }}>
             {children}
           </Context.Provider>

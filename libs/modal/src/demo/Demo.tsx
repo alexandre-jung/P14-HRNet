@@ -58,8 +58,14 @@ export default function Demo () {
           id="modal-2"
           close
           onClose={handleHide2}
+          centered
+          className="coucou"
+          style={{ backgroundColor: 'gray', color: 'white' }}
         >
-          <Modal.Header closeButton>
+          <Modal.Header
+            closeButton
+            styles={{ closeButton: { color: 'white' } }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa, fuga ipsa molestias nobis officia
             qui quisquam soluta ullam vitae.
           </Modal.Header>
