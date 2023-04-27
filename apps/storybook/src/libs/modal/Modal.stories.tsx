@@ -31,6 +31,6 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   id: 'modal-1',
-  show: true,
+  show: false,
 };
 Default.storyName = 'modal';
