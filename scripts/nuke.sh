@@ -2,5 +2,5 @@
 
 (
   shopt -s globstar;
-  rm -rf **/node_modules **/*/.turbo;
+  rm -rf **/node_modules **/.turbo **/dist **/storybook-static;
 )
