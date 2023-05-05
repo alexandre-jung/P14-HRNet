@@ -1,0 +1,51 @@
+.select {
+  display: inline-flex;
+  flex-flow: column nowrap;
+  font-family: 'Segoe UI', sans-serif;
+  height: 2rem;
+}
+
+.input {
+  flex: 1 0 auto;
+  height: 2rem;
+  line-height: 1.5rem;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: 1px solid black;
+}
+
+.dropdown {
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  position: relative;
+  top: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.option {
+  padding: 5px;
+  border: 2px solid transparent;
+}
+
+.option:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.option:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.option:hover,
+.option.active {
+  background-color: #f5f5ff;
+}
