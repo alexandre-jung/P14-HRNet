@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface SideControlsProps {
   children: ReactNode,
@@ -6,4 +6,6 @@ export interface SideControlsProps {
   onNext: () => void;
   previousDisabled?: boolean;
   nextDisabled?: boolean;
+  className?: string;
+  style?: CSSProperties;
 }

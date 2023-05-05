@@ -1,11 +1,16 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, CSSProperties } from 'react';
 
 import { useDatePicker } from '../../DatePicker';
 import MonthOptions from './MonthOptions';
 
 import styles from './style.module.scss';
 
-export default function MonthSelect () {
+export type MonthSelectProps = {
+  className?: string;
+  style?: CSSProperties;
+}
+
+export default function MonthSelect({ className, style }: MonthSelectProps) {
   const { date, api } = useDatePicker();
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -17,7 +22,8 @@ export default function MonthSelect () {
 
   return (
     <select
-      className={styles.MonthSelect}
+      className={`${styles.MonthSelect} ${className}`}
+      style={style}
       value={date.month}
       onChange={handleChange}
     >

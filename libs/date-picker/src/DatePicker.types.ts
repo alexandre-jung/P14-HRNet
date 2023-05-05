@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import {CSSProperties, ReactNode} from 'react';
 
 export interface Date {
   year: number;
@@ -29,4 +29,6 @@ export interface DatePickerProps extends Meta {
   children: ReactNode;
   date: Date;
   onChange: (date: Date) => void;
+  className?: string;
+  style?: CSSProperties;
 }

@@ -24,6 +24,8 @@ export function DatePicker ({
   minYear,
   maxYear,
   onChange,
+  className,
+  style,
 }: DatePickerProps) {
   const meta = { minYear, maxYear };
 
@@ -81,6 +83,7 @@ export function DatePicker ({
           className={styles.FloatingDatePicker}
           ref={refs.setFloating}
           style={{
+            ...style,
             position: strategy,
             top: y ?? 0,
             left: x ?? 0,

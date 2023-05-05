@@ -1,13 +1,15 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 import { useDatePicker } from '../DatePicker';
 import SideControls from './SideControls';
 
 interface YearControlsProps {
   children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
 }
 
-export default function YearControls ({ children }: YearControlsProps) {
+export default function YearControls({ children, className, style }: YearControlsProps) {
   const { date, api, meta } = useDatePicker();
 
   const isLowerBounded = date.year == meta.minYear;
@@ -15,6 +17,8 @@ export default function YearControls ({ children }: YearControlsProps) {
 
   return (
     <SideControls
+      className={className}
+      style={style}
       onPrevious={api.previousYear}
       onNext={api.nextYear}
       previousDisabled={isLowerBounded}

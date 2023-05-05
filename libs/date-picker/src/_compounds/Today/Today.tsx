@@ -3,8 +3,14 @@ import { House } from '@hrnet-aj/icons';
 import { useDatePicker } from '../../DatePicker';
 
 import styles from './styles.module.scss';
+import { CSSProperties } from "react";
 
-export default function Today () {
+export type TodayProps = {
+  className?: string;
+  style?: CSSProperties;
+}
+
+export default function Today({ className, style }: TodayProps) {
   const { api } = useDatePicker();
 
   const handleClick = () => {
@@ -18,7 +24,8 @@ export default function Today () {
 
   return (
     <button
-      className={styles.Today}
+      className={`${styles.Today} ${className}`}
+      style={style}
       onClick={handleClick}
     >
       <House

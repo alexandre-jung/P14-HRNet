@@ -11,6 +11,15 @@ export default {
   parameters: {
     layout: 'padded',
   },
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex' }}>
+        <div style={{ margin: 'auto' }}>
+          <Story />
+        </div>
+      </div>
+    )
+  ]
 } as ComponentMeta<typeof DatePicker>;
 
 const changedAction = action('changed');
@@ -38,6 +47,7 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
         {...args}
         date={validDate}
         onChange={handleChange}
+        style={{ backgroundColor: 'white', color: 'black' }}
       >
         <div
           style={{
@@ -50,11 +60,11 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
           <DatePicker.Today />
 
           <DatePicker.MonthControls>
-            <DatePicker.MonthSelect />
+            <DatePicker.MonthSelect style={{ backgroundColor: 'white' }} />
           </DatePicker.MonthControls>
 
           <DatePicker.YearControls>
-            <DatePicker.YearSelect />
+            <DatePicker.YearSelect style={{ backgroundColor: 'white' }} />
           </DatePicker.YearControls>
         </div>
 

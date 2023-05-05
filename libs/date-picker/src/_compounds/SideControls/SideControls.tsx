@@ -5,17 +5,20 @@ import styles from './styles.module.scss';
 
 const CARET_SIZE = 20;
 
-export default function SideControls ({
+export default function SideControls({
   children,
   onPrevious,
   onNext,
   previousDisabled,
   nextDisabled,
+  className,
+  style,
 }: SideControlsProps) {
   return (
     <div className={styles.container}>
       <button
-        className={styles.button}
+        className={`${styles.button} ${className}`}
+        style={style}
         onClick={onPrevious}
         disabled={previousDisabled}
       >
@@ -26,7 +29,8 @@ export default function SideControls ({
       </button>
       {children}
       <button
-        className={styles.button}
+        className={`${styles.button} ${className}`}
+        style={style}
         onClick={onNext}
         disabled={nextDisabled}
       >
