@@ -1,18 +1,7 @@
 import { useState } from 'react';
 
+import { SelectProps } from './Select.types';
 import styles from './styles.module.css';
-
-export type Option = {
-  label: string
-  value: string | number
-}
-
-export type Options = Option[]
-
-export type SelectProps = {
-  options: Options
-  placeholder?: string
-}
 
 export default function Select({ options, placeholder }: SelectProps) {
   const [value, setValue] = useState<string | number | null>(null);
