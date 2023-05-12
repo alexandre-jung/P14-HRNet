@@ -10,7 +10,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist src",
-    "build": "pnpm run clean && svgr assets/ && rollup -c"
+    "build": "pnpm run clean && svgr assets/ && rollup -c",
+    "dev": "pnpm run clean && svgr assets/ && rollup -c"
   },
   "keywords": [
     "React",
