@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './data-table.module.scss';
 import { useState } from 'react';
+import { SortIcon } from '../sort-icon/sort-icon';
 
 export interface DataTableProps {
   className?: string;
@@ -23,6 +24,7 @@ export const DataTable = ({ className, data, columns }: DataTableProps) => {
       if (key == currentSortKey) {
         const currentDirection = previous.slice(0, 1);
         const newDirection = currentDirection == '+' ? '-' : '+';
+        if (currentDirection == '-') return '';
         return `${newDirection}${currentSortKey}`;
       } else {
         return `+${key}`;
@@ -35,7 +37,7 @@ export const DataTable = ({ className, data, columns }: DataTableProps) => {
     const currentSortKey = currentSort.slice(1);
     const currentDirection = currentSort.slice(0, 1);
     sortedData.sort((a, b) =>
-      a[currentSortKey] < b[currentSortKey] ? (currentDirection == '+' ? - 1 : 1) : currentDirection == '+' ? 1 : - 1
+      a[currentSortKey] < b[currentSortKey] ? (currentDirection == '+' ? - 1 : 1) : currentDirection == '+' ? 1 : - 1,
     );
   }
 
@@ -52,11 +54,16 @@ export const DataTable = ({ className, data, columns }: DataTableProps) => {
               <td
                 onClick={() => handleSort(key)}
                 key={key}
-                style={{
-                  backgroundColor: currentSortKey == key ? (currentDirection == '+' ? 'green' : 'blue') : 'red'
-                }}
+                className={styles.HeaderCell}
               >
-                {title}
+                <div className={styles.Header}>
+                  {title}
+                  {currentSortKey == key && currentDirection ? (
+                    <SortIcon direction={currentDirection == '+' ? 'asc' : 'desc'} />
+                  ) : (
+                    <SortIcon />
+                  )}
+                </div>
               </td>
             );
           })}
@@ -68,7 +75,15 @@ export const DataTable = ({ className, data, columns }: DataTableProps) => {
             <tr>
               {columnEntries.map(([key, title]) => {
                 if (dataEntry.hasOwnProperty(key)) {
-                  return <td key={key} title={title}>{dataEntry[key]}</td>;
+                  return (
+                    <td
+                      key={key}
+                      title={title}
+                      className={styles.DataCell}
+                    >
+                      {dataEntry[key]}
+                    </td>
+                  );
                 }
               })}
             </tr>

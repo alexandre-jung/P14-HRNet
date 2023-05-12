@@ -1,3 +1,32 @@
 .DataTable {
   width: 100%;
+  border-collapse: collapse;
+
+  tbody tr:nth-child(even) {
+    background: #f3f5ff;
+  }
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  padding: 5px 10px;
+  color: #f4f0f0;
+}
+
+.HeaderCell {
+  cursor: pointer;
+
+  &:hover {
+    background: #4b4b4b;
+  }
+
+  background-color: #313131;
+}
+
+.DataCell {
+  padding: 5px 10px;
+  border: 1px solid lightgray;
 }
