@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import { DataTable } from '../../../components/data-table/data-table';
+import { DataTable } from '../../../components';
 import { columns, data } from '../../../mocks';
 
 export default createBoard({

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { Column } from './data-table';
+import { Column } from './data-table.types';
 
 export function useSorting (defaultSort: string) {
   const [currentSort, setCurrentSort] = useState(defaultSort);

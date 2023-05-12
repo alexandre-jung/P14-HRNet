@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@hrnet-aj/data-table": "workspace:*",
     "@hrnet-aj/date-picker": "workspace:*",
     "@hrnet-aj/icons": "workspace:*",
     "@hrnet-aj/modal": "workspace:*",

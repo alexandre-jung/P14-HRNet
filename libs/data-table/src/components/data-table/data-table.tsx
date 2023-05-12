@@ -2,33 +2,20 @@ import classNames from 'classnames';
 
 import { SortIcon } from '../sort-icon/sort-icon';
 import { useDataTable } from './hooks';
+import { DataTableProps } from './data-table.types';
 import styles from './data-table.module.scss';
-
-export type Column = {
-  key: string;
-  title: string;
-  sortable?: boolean;
-  numeric?: boolean;
-}
-
-export interface DataTableProps {
-  className?: string;
-  data: Record<string, any>[];
-  columns: Column[];
-  defaultSort?: string;
-}
 
 /**
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see
  * https://help.codux.com/kb/en/article/configuration-for-data-tables-and-templates
  */
-export const DataTable = ({
+export default function DataTable ({
   className,
   data,
   columns,
   defaultSort = '',
-}: DataTableProps) => {
+}: DataTableProps) {
   const {
     handleSort,
     sortDirection,

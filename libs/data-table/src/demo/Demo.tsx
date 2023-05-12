@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './styles.module.css';
-import { DataTable } from '../components/data-table/data-table';
+import { DataTable } from '../components';
 import { columns, data } from '../mocks';
 
 export default function Demo () {
