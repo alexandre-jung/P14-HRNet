@@ -1,0 +1,8 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #213547;
+  margin-right: calc(0px - (100vw - 100%));
+  padding-right: 25px;
+  overflow-x: hidden;
+  color: white;
+}
