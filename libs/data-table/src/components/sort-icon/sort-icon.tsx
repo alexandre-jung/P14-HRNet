@@ -7,11 +7,6 @@ export interface SortIconProps {
   direction?: 'asc' | 'desc';
 }
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see
- * https://help.codux.com/kb/en/article/configuration-for-sort-icons-and-templates
- */
 export const SortIcon = ({ className, direction }: SortIconProps) => {
   return (
     <div className={classNames(styles.SortIcon, className)}>

@@ -5,11 +5,6 @@ import { useDataTable } from './hooks';
 import { DataTableProps } from './data-table.types';
 import styles from './data-table.module.scss';
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see
- * https://help.codux.com/kb/en/article/configuration-for-data-tables-and-templates
- */
 export default function DataTable ({
   className,
   data,

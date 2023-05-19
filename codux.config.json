@@ -1,0 +1,47 @@
+{
+  "$schema": "https://wixplosives.github.io/codux-config-schema/codux.config.schema.json",
+  "boardGlobalSetup": "./_codux/boards-global-setup.ts",
+  "componentsDiscovery": {
+    "include": [
+      "libs/*/src/**"
+    ],
+    "exclude": [
+      "apps/storybook",
+      "libs/*/__tests__/**"
+    ]
+  },
+  "newComponent": {
+    "componentsPath": "src/components",
+    "templatesPath": "_codux/component-templates"
+  },
+  "resolve": {
+    "packageRoots": [
+      "node_modules",
+      "apps/front/node_modules",
+      "apps/storybook/node_modules",
+      "libs/data-table/node_modules",
+      "libs/date-picker/node_modules",
+      "libs/icons/node_modules",
+      "libs/modal/node_modules",
+      "libs/select/node_modules",
+      "libs/ui/node_modules",
+      "libs/utils/node_modules"
+    ]
+  },
+  "scripts": {
+    "install": {
+      "title": "Install",
+      "description": "Run install",
+      "command": "pnpm i",
+      "trigger": [
+        "checkout",
+        "pull",
+        "setup"
+      ]
+    }
+  },
+  "styling": {
+    "solution": "scss modules"
+  },
+  "svgLoader": "both"
+}
