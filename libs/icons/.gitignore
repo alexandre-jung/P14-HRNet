@@ -1,1 +1,4 @@
-src/
+src/*
+!src/_codux
+!src/Icon
+!src/icon-names.ts
