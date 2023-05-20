@@ -1,0 +1,16 @@
+.Pagination {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.pagination-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+.page-size-control {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
