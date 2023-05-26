@@ -1,10 +1,11 @@
-import { useSortedData } from '../hooks';
+import { useSortedData } from '../../hooks';
+import { SortDirection } from '../data-table';
 
 export type DataSortProps<TItem extends Record<string, unknown>> = {
   children: (sortedData: TItem[]) => JSX.Element;
   data: TItem[];
-  sortKey: keyof TItem;
-  sortDirection: 'asc' | 'desc';
+  sortKey: keyof TItem | null;
+  sortDirection: SortDirection | null;
   numeric?: boolean;
 }
 
@@ -15,10 +16,12 @@ const DataSort = <TItem extends Record<string, unknown>> ({
   sortDirection,
   numeric,
 }: DataSortProps<TItem>) => {
-  const sorting = `${sortDirection == 'asc' ? '+' : '-'}${sortKey.toString()}`;
+  if (!sortKey || !sortDirection) return <>{children(data)}</>;
+
+  const sorting = `${sortDirection == 'asc' ? '+' : '-'}${sortKey?.toString()}`;
   const sortedData = useSortedData(data, sorting, { numeric });
 
-  return <div>{children(sortedData)}</div>;
+  return <>{children(sortedData)}</>;
 };
 
 export default DataSort;

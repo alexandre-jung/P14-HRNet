@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './pagination.module.scss';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 
 export type PaginationProps<TItem, TSize extends number[]> = {
   className?: string;
@@ -9,8 +9,8 @@ export type PaginationProps<TItem, TSize extends number[]> = {
   currentPage: number;
   pageSize: TSize[number];
   onPageChange: (toPage: number) => void;
-  onPageSizeChange: (pageSize: number) => void;
-  pageSizes: [...TSize];
+  onPageSizeChange: (pageSize: TSize[number]) => void;
+  pageSizes: readonly [...TSize];
 };
 
 const Pagination = <TItem, TSize extends number[]> ({
@@ -39,7 +39,7 @@ const Pagination = <TItem, TSize extends number[]> ({
           {[...Array(numberOfPages).keys()].map((pageIndex) => {
             const pageNumber = pageIndex + 1;
 
-            if (numberOfPages <= 1) return <></>;
+            if (numberOfPages <= 1) return <Fragment key={pageIndex} />;
 
             return (
               <button disabled={pageNumber == currentPage} onClick={() => onPageChange(pageNumber)} key={pageNumber}>
@@ -50,9 +50,17 @@ const Pagination = <TItem, TSize extends number[]> ({
         </div>
         <div className={styles['page-size-control']}>
           Show
-          <select onChange={(event) => onPageSizeChange(parseInt(event.target.value))} value={pageSize}>
+          <select
+            onChange={(event) => onPageSizeChange(parseInt(event.target.value) as unknown as TSize[number])}
+            value={pageSize}
+          >
             {pageSizes.map((size) => (
-              <option value={size}>{size}</option>
+              <option
+                value={size}
+                key={size}
+              >
+                {size}
+              </option>
             ))}
           </select>
           Items

@@ -1,4 +1,12 @@
-export const data = [
+export type DataItem = {
+  id: number,
+  firstName: string,
+  lastName: string,
+  age: string,
+  real: boolean,
+}
+
+export const data: DataItem[] = [
   {
     id: 9,
     firstName: 'Katsuki',

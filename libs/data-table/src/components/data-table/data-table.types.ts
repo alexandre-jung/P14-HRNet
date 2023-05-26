@@ -5,9 +5,26 @@ export type Column = {
   numeric?: boolean;
 }
 
-export interface DataTableProps {
+export type DataTableProps<TItem extends Record<string, unknown>> = {
   className?: string;
-  data: Record<string, any>[];
+  data: TItem[];
   columns: Column[];
-  defaultSort?: string;
+  entryKey: keyof TItem;
+  sortKey?: keyof TItem | null;
+  sortDirection?: SortDirection | null;
+  onSortChange?: SortChangeHandler<TItem>;
+}
+
+export type SortChangeHandler<TItem> = ({ key, direction }: SortChangeEvent<TItem>) => void;
+
+export type SortChangeEvent<TItem> = {
+  key: keyof TItem | null,
+  direction: SortDirection | null
+}
+
+export type SortDirection = 'asc' | 'desc';
+
+export type UseDataTableSortOptions<TItem> = {
+  defaultSortKey?: keyof TItem | null;
+  defaultDirection?: SortDirection | null;
 }

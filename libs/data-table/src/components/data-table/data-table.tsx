@@ -1,22 +1,51 @@
 import classNames from 'classnames';
 
 import { SortIcon } from '../sort-icon/sort-icon';
-import { useDataTable } from './hooks';
-import { DataTableProps } from './data-table.types';
+import { DataTableProps, SortDirection } from './data-table.types';
 import styles from './data-table.module.scss';
 
-export default function DataTable ({
+function isValidKey (k: unknown): k is string | number {
+  return typeof k == 'string' || typeof k == 'number';
+}
+
+function isBoolean (o: unknown): o is boolean {
+  return typeof o == 'boolean';
+}
+
+export default function DataTable<TItem extends Record<string, unknown>> ({
   className,
   data,
   columns,
-  defaultSort = '',
-}: DataTableProps) {
-  const {
-    handleSort,
-    sortDirection,
-    sortKey,
-    sortedData,
-  } = useDataTable(defaultSort, data, columns);
+  sortKey = null,
+  sortDirection = null,
+  entryKey,
+  onSortChange,
+}: DataTableProps<TItem>) {
+  const getNextSortDirection = (): SortDirection | null => {
+    if (sortDirection == 'asc') return 'desc';
+    else if (sortDirection == 'desc') return null;
+    else return 'asc';
+  };
+
+  const sortChangeHandler = ({ sortable, key }: {
+    sortable: boolean | undefined,
+    key: keyof TItem
+  }) => () => {
+    if (!sortable || !onSortChange) return;
+
+    if (key == sortKey) {
+      const nextDirection = getNextSortDirection();
+      onSortChange({
+        key: nextDirection == null ? null : sortKey,
+        direction: nextDirection,
+      });
+    } else {
+      onSortChange({
+        key,
+        direction: 'asc',
+      });
+    }
+  };
 
   return (
     <>
@@ -26,14 +55,14 @@ export default function DataTable ({
           {columns.map(({ key, title, sortable }) => {
             return (
               <td
-                onClick={sortable ? () => handleSort(key) : () => {}}
+                onClick={sortChangeHandler({ key, sortable })}
                 key={key}
                 className={styles.HeaderCell}
               >
                 <div className={styles.Header}>
                   {title}
                   {sortKey == key && sortDirection ? (
-                    sortable && <SortIcon direction={sortDirection == '+' ? 'asc' : 'desc'} />
+                    sortable && <SortIcon direction={sortDirection} />
                   ) : (
                     sortable && <SortIcon />
                   )}
@@ -44,12 +73,14 @@ export default function DataTable ({
         </tr>
         </thead>
         <tbody>
-        {sortedData.map((dataEntry) => {
-          const { id, key } = dataEntry;
-          const finalKey = id ?? key;
+        {data.map((dataEntry) => {
+          const k = dataEntry[entryKey];
+          if (!isValidKey(k)) {
+            throw new Error('Key should be a string or a number');
+          }
 
           return (
-            <tr key={finalKey}>
+            <tr key={k}>
               {columns.map(({ key, title }) => {
                 if (dataEntry.hasOwnProperty(key)) {
                   const entry = dataEntry[key];
@@ -60,7 +91,7 @@ export default function DataTable ({
                       title={title}
                       className={styles.DataCell}
                     >
-                      {typeof entry == 'boolean' ? entry.toString() : entry}
+                      {isBoolean(entry) ? entry.toString() : (entry as any)}
                     </td>
                   );
                 } else {

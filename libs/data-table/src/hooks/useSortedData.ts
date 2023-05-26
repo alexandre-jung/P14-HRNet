@@ -17,7 +17,9 @@ export function useSortedData<TItem extends Record<string, unknown>> (
             const _a = parseInt((a[currentSortKey] as any).toString(), 10);
             const _b = parseInt((b[currentSortKey] as any).toString(), 10);
             if (isNaN(_a) || isNaN(_b)) {
-              return (a[currentSortKey] as any) - (b[currentSortKey] as any);
+              return (a[currentSortKey] as any).toString() < (b[currentSortKey] as any).toString() ?
+                (currentDirection == '+' ? - 1 : 1) :
+                currentDirection == '+' ? 1 : - 1;
             }
             const result = _a - _b;
             return currentDirection == '+' ? result : - result;
