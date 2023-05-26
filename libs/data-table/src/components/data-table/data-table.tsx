@@ -52,13 +52,15 @@ export default function DataTable ({
             <tr key={finalKey}>
               {columns.map(({ key, title }) => {
                 if (dataEntry.hasOwnProperty(key)) {
+                  const entry = dataEntry[key];
+
                   return (
                     <td
                       key={key}
                       title={title}
                       className={styles.DataCell}
                     >
-                      {dataEntry[key]}
+                      {typeof entry == 'boolean' ? entry.toString() : entry}
                     </td>
                   );
                 } else {

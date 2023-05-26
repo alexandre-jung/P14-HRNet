@@ -57,4 +57,9 @@ export const columns = [
     sortable: true,
     numeric: true,
   },
+  {
+    key: 'real',
+    title: 'Real',
+    sortable: true,
+  },
 ];
