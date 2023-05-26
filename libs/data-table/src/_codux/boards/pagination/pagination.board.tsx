@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import { Pagination } from '../../../components/pagination/pagination';
+import { Pagination } from '../../..';
 
 const data = [
   { id: 0, name: 'react' },

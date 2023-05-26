@@ -29,8 +29,8 @@ export function useSorting (defaultSort: string) {
   };
 }
 
-export function useSortedData (
-  data: Record<string, any>[],
+export function useSortedData<TItem extends Record<string, unknown>> (
+  data: TItem[],
   sorting: string,
   options: { numeric?: boolean } = {},
 ) {
@@ -43,12 +43,15 @@ export function useSortedData (
       const currentDirection = sorting.slice(0, 1);
       sortedData.sort((a, b) => {
           if (numeric) {
-            const _a = parseInt(a[currentSortKey], 10);
-            const _b = parseInt(b[currentSortKey], 10);
+            const _a = parseInt((a[currentSortKey] as any).toString(), 10);
+            const _b = parseInt((b[currentSortKey] as any).toString(), 10);
+            if (isNaN(_a) || isNaN(_b)) {
+              return (a[currentSortKey] as any) - (b[currentSortKey] as any);
+            }
             const result = _a - _b;
             return currentDirection == '+' ? result : - result;
           }
-          return a[currentSortKey] < b[currentSortKey] ?
+          return (a[currentSortKey] as any).toString() < (b[currentSortKey] as any).toString() ?
             (currentDirection == '+' ? - 1 : 1) :
             currentDirection == '+' ? 1 : - 1;
         },

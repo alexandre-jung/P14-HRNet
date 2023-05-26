@@ -13,7 +13,7 @@ export type PaginationProps<TItem, TSize extends number[]> = {
   pageSizes: [...TSize];
 };
 
-export const Pagination = <TItem, TSize extends number[]> ({
+const Pagination = <TItem, TSize extends number[]> ({
   className,
   children,
   data,
@@ -61,3 +61,5 @@ export const Pagination = <TItem, TSize extends number[]> ({
     </div>
   );
 };
+
+export default Pagination;

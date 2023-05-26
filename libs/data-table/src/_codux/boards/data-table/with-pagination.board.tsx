@@ -1,6 +1,6 @@
 import { createBoard } from '@wixc3/react-board';
 import { columns, data, DataTable } from '../../..';
-import { Pagination } from '../../../components/pagination/pagination';
+import { Pagination } from '../../..';
 
 export default createBoard({
   name: 'PaginatedDataTable',
