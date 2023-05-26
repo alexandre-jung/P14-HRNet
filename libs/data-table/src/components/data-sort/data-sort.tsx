@@ -1,4 +1,4 @@
-import { useSortedData } from '../data-table/hooks';
+import { useSortedData } from '../hooks';
 
 export type DataSortProps<TItem extends Record<string, unknown>> = {
   children: (sortedData: TItem[]) => JSX.Element;
