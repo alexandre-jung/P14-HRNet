@@ -12,6 +12,10 @@ function isBoolean (o: unknown): o is boolean {
   return typeof o == 'boolean';
 }
 
+/**
+ * A table that displays an array of data objects,
+ * with sorting indicators in the headers.
+ */
 export default function DataTable<TItem extends Record<string, unknown>> ({
   className,
   data,

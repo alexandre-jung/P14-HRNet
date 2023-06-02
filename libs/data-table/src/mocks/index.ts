@@ -1,3 +1,9 @@
+import { Column } from '../components';
+
+/**
+ * Any user-defined object that represents the data to display.
+ * This is just an example.
+ */
 export type DataItem = {
   id: number,
   firstName: string,
@@ -44,7 +50,7 @@ export const data: DataItem[] = [
   },
 ];
 
-export const columns = [
+export const columns: Column[] = [
   {
     key: 'id',
     title: 'ID',

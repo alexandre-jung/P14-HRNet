@@ -1,23 +1,43 @@
-export type Column = {
-  key: string;
+/** The type that describes a column */
+export type Column<TKey extends string> = {
+  /** A string that identifies the data for this column */
+  key: TKey;
+  /** The name to display in the header */
   title: string;
+  /** Whether the data array should be sortable upon the  key  */
   sortable?: boolean;
+  /**
+   * When the corresponding data is a string starting with a number,
+   * define whether the data should be sorted by numeric order,
+   * rather than alphabetic (default)
+   */
   numeric?: boolean;
 }
+
+type StringKeyOf<TItem extends Record<string, unknown>> = Extract<keyof TItem, string>
+type ColumnOf<TItem extends Record<string, unknown>> = Column<StringKeyOf<TItem>>
 
 export type DataTableProps<TItem extends Record<string, unknown>> = {
   className?: string;
   data: TItem[];
-  columns: Column[];
+  /** Description of the columns */
+  columns: ColumnOf<TItem>[];
+  /** The data key that will identify each data item */
   entryKey: keyof TItem;
+  /** The data key to sort upon */
   sortKey?: keyof TItem | null;
   sortDirection?: SortDirection | null;
-  onSortChange?: SortChangeHandler<TItem>;
+  onSortChange?: SortChangeEventHandler<TItem>;
 }
 
-export type SortChangeHandler<TItem> = ({ key, direction }: SortChangeEvent<TItem>) => void;
+/** The function called when the user wants to change the sorting */
+export type SortChangeEventHandler<TItem> = (
+  /** Sorting event */
+  sortEvent: SortChangeEvent<TItem>,
+) => void;
 
 export type SortChangeEvent<TItem> = {
+  /** Data key */
   key: keyof TItem | null,
   direction: SortDirection | null
 }
