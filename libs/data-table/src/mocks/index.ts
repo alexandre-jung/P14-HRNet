@@ -50,7 +50,7 @@ export const data: DataItem[] = [
   },
 ];
 
-export const columns: Column[] = [
+export const columns: Column<keyof DataItem>[] = [
   {
     key: 'id',
     title: 'ID',

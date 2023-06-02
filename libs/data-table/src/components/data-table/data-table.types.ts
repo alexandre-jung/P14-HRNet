@@ -14,8 +14,8 @@ export type Column<TKey extends string> = {
   numeric?: boolean;
 }
 
-type StringKeyOf<TItem extends Record<string, unknown>> = Extract<keyof TItem, string>
-type ColumnOf<TItem extends Record<string, unknown>> = Column<StringKeyOf<TItem>>
+type StringKeyOf<TItem> = Extract<keyof TItem, string>
+type ColumnOf<TItem> = Column<StringKeyOf<TItem>>
 
 export type DataTableProps<TItem extends Record<string, unknown>> = {
   className?: string;
