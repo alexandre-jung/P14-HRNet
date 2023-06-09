@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createBoard } from '@wixc3/react-board';
 import { TextField } from '../../../components/text-field/text-field';
 
