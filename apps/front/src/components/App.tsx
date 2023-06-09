@@ -1,7 +1,8 @@
 import React from 'react';
+import { Button } from '@hrnet-aj/ui';
 
 function App () {
-  return <div />;
+  return <Button type="primary" text="coucou" onClick={() => {}} />;
 }
 
 export default App;
