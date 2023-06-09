@@ -1,0 +1,24 @@
+* {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input {
+  border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #9A9A9A;
+
+  &::placeholder {
+    font-style: italic;
+  }
+}
+
+.label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}

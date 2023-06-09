@@ -18,6 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "emitDeclarationOnly": true,
     "noImplicitAny": false,
+    "baseUrl": "src",
     "types": [
       "jest",
       "react"
