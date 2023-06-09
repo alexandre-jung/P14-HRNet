@@ -3,7 +3,7 @@ import { createBoard } from '@wixc3/react-board';
 import { NumberField } from '../../../components/number-field/number-field';
 
 export default createBoard({
-  name: 'NumberField',
+  name: 'ui/NumberField',
   Board: () => {
     const [value, setValue] = useState<number | null>(null);
 
@@ -22,5 +22,8 @@ export default createBoard({
         value={value}
       />
     );
+  },
+  environmentProps: {
+    canvasWidth: 250,
   },
 });

@@ -3,7 +3,7 @@ import { createBoard } from '@wixc3/react-board';
 import { data, DataSort } from '../../..';
 
 export default createBoard({
-  name: 'DataSort',
+  name: 'data-table/DataSort',
   Board: () => (
     <DataSort
       data={data}

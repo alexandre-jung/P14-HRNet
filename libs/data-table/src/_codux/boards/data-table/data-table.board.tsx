@@ -13,7 +13,7 @@ import { useDataTableSort, usePagination } from '../../../hooks';
 const pageSizes = [2, 4, 6, 8] as const;
 
 export default createBoard({
-  name: 'DataTable',
+  name: 'data-table/DataTable',
   Board: () => {
     const [currentSort, setCurrentSort] = useDataTableSort<DataItem>({
       defaultSortKey: 'firstName',

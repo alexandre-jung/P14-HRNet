@@ -13,7 +13,7 @@ const data = [
 ];
 
 export default createBoard({
-  name: 'Pagination',
+  name: 'data-table/Pagination',
   Board: () => (
     <Pagination
       data={data}
