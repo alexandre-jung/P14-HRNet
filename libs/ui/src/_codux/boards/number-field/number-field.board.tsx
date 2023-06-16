@@ -5,10 +5,10 @@ import { NumberField } from '../../../components/number-field/number-field';
 export default createBoard({
   name: 'ui/NumberField',
   Board: () => {
-    const [value, setValue] = useState<number | null>(null);
+    const [value, setValue] = useState<number | undefined>();
 
     useEffect(() => {
-      console.log(`value: ${typeof value == 'number' ? value : '<empty>'}`);
+      console.log(`value: ${typeof value !== undefined ? value : '<empty>'}`);
     });
 
     return (
@@ -19,7 +19,6 @@ export default createBoard({
         onChange={setValue}
         required
         placeholder="42"
-        value={value}
       />
     );
   },

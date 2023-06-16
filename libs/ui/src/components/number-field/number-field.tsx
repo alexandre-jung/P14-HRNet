@@ -1,6 +1,6 @@
 import _classNames from 'classnames';
 import styles from './number-field.module.scss';
-import { ChangeEvent, useId } from 'react';
+import { ChangeEvent, useId, useState } from 'react';
 
 export type NumberFieldProps = Omit<JSX.IntrinsicElements['input'], 'defaultValue' | 'onChange' | 'value'> & {
   classNames?: {
@@ -9,29 +9,32 @@ export type NumberFieldProps = Omit<JSX.IntrinsicElements['input'], 'defaultValu
     root?: string;
   };
   label?: string;
-  onChange?: (value: number | null) => void;
+  defaultValue?: number;
+  onChange?: (value: number | undefined) => void;
   value?: number | null;
 }
 
 export const NumberField = ({
   className,
   classNames,
+  defaultValue,
   label,
   onChange,
   required,
-  value,
+  value: ValueProp,
   ...restProps
 }: NumberFieldProps) => {
+  const [value, setValue] = useState(defaultValue ?? '');
   const id = useId();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const valueAsNumber = parseInt(event.target.value, 10);
+    if (isNaN(valueAsNumber)) {
+      return;
+    }
+    setValue(valueAsNumber);
     if (onChange) {
-      const value = parseInt(event.target.value, 10);
-      if (isNaN(value)) {
-        onChange(null);
-      } else {
-        onChange(value);
-      }
+      onChange(valueAsNumber);
     }
   };
 
@@ -52,7 +55,7 @@ export const NumberField = ({
         onChange={handleChange}
         required={required}
         type="number"
-        value={value ?? undefined}
+        value={value}
         {...restProps}
       />
     </div>
