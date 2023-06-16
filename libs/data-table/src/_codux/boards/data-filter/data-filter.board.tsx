@@ -3,7 +3,7 @@ import { DataFilter } from '../../../components/data-filter/data-filter';
 import { data } from '../../../mocks';
 
 export default createBoard({
-  name: 'DataFilter',
+  name: 'data-table/DataFilter',
   Board: () => (
     <DataFilter
       data={data}
