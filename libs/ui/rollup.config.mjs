@@ -10,6 +10,7 @@ const MODE = 'prod';
 
 // Avoid including external files in the final bundle.
 const externalModules = [
+  'classnames',
   'jest',
   'tslib',
   '@hrnet-aj/icons',
