@@ -1,5 +1,19 @@
 # @hrnet-aj/ui
 
+## 2.0.0
+
+### Major Changes
+
+- update ui and data-table
+
+  changes
+
+  - data-table: add DataFilter
+
+  breaking changes
+
+  - ui: re-create button
+
 ## 1.0.0
 
 ### Major Changes
