@@ -21,8 +21,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "pnpm run clean && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest"
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "React"
