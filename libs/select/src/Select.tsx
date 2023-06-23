@@ -11,6 +11,7 @@ export default function Select ({
   options,
   placeholder,
   required,
+  inputStyle,
 }: SelectProps) {
   const id = useId();
   const [value, setValue] = useState<string | number | null>(null);
@@ -64,7 +65,11 @@ export default function Select ({
             close();
           }
         }}
-        style={{ color: value === null ? 'gray' : 'black' }}
+        style={{
+          color: value === null ? 'gray' : 'black',
+          fontStyle: value === null ? 'italic' : 'normal',
+          ...inputStyle,
+        }}
       >
         {value === null ? placeholder : label}
       </div>

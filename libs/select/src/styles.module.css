@@ -9,7 +9,7 @@
 .input {
   flex: 1 0 auto;
   line-height: 1.5rem;
-  padding: 5px;
+  padding: 5px 7px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
@@ -29,7 +29,7 @@
   background-color: white;
   cursor: pointer;
   flex: 1 0 auto;
-  max-height: 150px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
