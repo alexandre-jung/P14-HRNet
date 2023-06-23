@@ -1,8 +1,9 @@
 .select {
   display: inline-flex;
   flex-flow: column nowrap;
+  gap: 8px;
   font-family: 'Segoe UI', sans-serif;
-  height: 2rem;
+  height: 5rem;
 }
 
 .input {
@@ -28,6 +29,9 @@
   top: 5px;
   background-color: white;
   cursor: pointer;
+  flex: 1 0 auto;
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 .option {
@@ -48,4 +52,9 @@
 .option:hover,
 .option.active {
   background-color: #f5f5ff;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 0.9rem;
 }

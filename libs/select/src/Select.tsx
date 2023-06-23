@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import classNames from 'classnames';
 
 import { SelectProps } from './Select.types';
 import styles from './styles.module.css';
 
-export default function Select({ options, placeholder }: SelectProps) {
+export default function Select ({
+  className,
+  label: labelProp,
+  name,
+  options,
+  placeholder,
+  required,
+}: SelectProps) {
+  const id = useId();
   const [value, setValue] = useState<string | number | null>(null);
   const [label, setLabel] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +21,26 @@ export default function Select({ options, placeholder }: SelectProps) {
   const toggle = () => setIsOpen(p => !p);
   const [active, setActive] = useState(0);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleValueChange = (value: string) => {
+    setValue(value);
+    if (inputRef.current) {
+      inputRef.current.value = value;
+    }
+  };
+
   return (
-    <div className={styles.select}>
+    <div className={classNames(styles.select, className)}>
+      {labelProp && (
+        <label
+          className={styles.label}
+          htmlFor={id}
+        >
+          {labelProp}
+          {required && ' *'}
+        </label>
+      )}
       <div
         className={styles.input}
         onClick={(event) => {
@@ -30,7 +57,7 @@ export default function Select({ options, placeholder }: SelectProps) {
           } else if (event.key == 'ArrowDown') {
             setActive((active + 1) % options.length);
           } else if (event.key == 'Enter') {
-            setValue(options[active].value);
+            handleValueChange(options[active].value.toString());
             setLabel(options[active].label);
             close();
           } else if (event.key == 'Escape') {
@@ -46,7 +73,6 @@ export default function Select({ options, placeholder }: SelectProps) {
         style={{
           opacity: isOpen ? 1 : 0,
           height: isOpen ? 'auto' : 0,
-          overflow: isOpen ? 'visible' : 'hidden',
         }}
       >
         {options.map((option, index) => (
@@ -54,16 +80,23 @@ export default function Select({ options, placeholder }: SelectProps) {
             className={`${styles.option} ${index == active ? styles.active : ''}`}
             key={option.value}
             onMouseDown={(event) => {
-              setLabel(option.label);
-              setValue(option.value);
-              close();
               event.preventDefault();
+              setLabel(option.label);
+              handleValueChange(option.value.toString());
+              close();
             }}
           >
             {option.label}
           </div>
         ))}
       </div>
+      <input
+        hidden
+        type="text"
+        name={name}
+        readOnly
+        ref={inputRef}
+      />
     </div>
   );
 }

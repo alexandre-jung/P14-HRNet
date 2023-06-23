@@ -5,7 +5,8 @@ export type Option = {
 
 export type Options = Option[]
 
-export type SelectProps = {
+export type SelectProps = JSX.IntrinsicElements['select'] & {
+  label?: string;
   options: Options
   placeholder?: string
 }
