@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import '@hrnet-aj/data-table/style.css';
 import '@hrnet-aj/date-picker/style.css';
 import '@hrnet-aj/modal/style.css';
+import '@hrnet-aj/select/style.css';
 import '@hrnet-aj/ui/style.css';
 import './assets/index.scss';
 

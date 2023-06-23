@@ -1,9 +1,11 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export function Root () {
   return (
-    <div>
-      <h1>HRNet</h1>
+    <div style={{ color: '#4f4f4f' }}>
+      <Link to={'/'}>
+        <h1 style={{ color: '#3968e2' }}>HRNet</h1>
+      </Link>
       <Outlet />
     </div>
   );

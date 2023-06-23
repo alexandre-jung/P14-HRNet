@@ -39,6 +39,9 @@ importers:
       '@hrnet-aj/modal':
         specifier: workspace:*
         version: link:../../libs/modal
+      '@hrnet-aj/select':
+        specifier: workspace:*
+        version: link:../../libs/select
       '@hrnet-aj/ui':
         specifier: workspace:*
         version: link:../../libs/ui
