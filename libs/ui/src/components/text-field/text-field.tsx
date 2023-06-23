@@ -1,6 +1,6 @@
 import _classNames from 'classnames';
 import styles from './text-field.module.scss';
-import { ChangeEvent, useId } from 'react';
+import { ChangeEvent, CSSProperties, useId } from 'react';
 
 export type TextFieldProps = Omit<JSX.IntrinsicElements['input'], 'defaultValue' | 'onChange'> & {
   classNames?: {
@@ -10,6 +10,7 @@ export type TextFieldProps = Omit<JSX.IntrinsicElements['input'], 'defaultValue'
   };
   label?: string;
   onChange?: (value: string) => void;
+  style?: CSSProperties;
 }
 
 export const TextField = ({
@@ -18,6 +19,7 @@ export const TextField = ({
   label,
   onChange,
   required,
+  style,
   value,
   ...restProps
 }: TextFieldProps) => {
@@ -30,7 +32,10 @@ export const TextField = ({
   };
 
   return (
-    <div className={_classNames(styles.root, classNames?.root)}>
+    <div
+      className={_classNames(styles.root, classNames?.root)}
+      style={style}
+    >
       {label && (
         <label
           className={_classNames(styles.label, classNames?.label)}
