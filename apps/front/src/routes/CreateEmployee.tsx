@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
-import { Button, NumberField, TextField } from '@hrnet-aj/ui';
 import { FormEvent } from 'react';
+
+import { UsersThree } from '@hrnet-aj/icons';
 import { Select } from '@hrnet-aj/select';
+import { Button, NumberField, TextField } from '@hrnet-aj/ui';
+
 import { COUNTRIES, DEPARTMENTS } from '../constants';
-import { CirclePlus } from '@hrnet-aj/icons/src';
+import { ViewHeader } from '../components';
 
 export function CreateEmployee () {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -14,17 +16,13 @@ export function CreateEmployee () {
 
   return (
     <div>
-      <h2
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 12,
-        }}
-      >
-        <CirclePlus color="#239B56" fontSize={24} />
-        Create employee
-      </h2>
-      <Link to={'/employees'}>View employees</Link>
+      <ViewHeader
+        icon={UsersThree}
+        iconColor="#2874A6"
+        title="Create employee"
+        linkText="View employees"
+        linkTo="/employees"
+      />
       <form
         onSubmit={handleSubmit}
         style={{

@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
-import { UsersThree } from '@hrnet-aj/icons';
+import { CirclePlus } from '@hrnet-aj/icons';
+
+import { ViewHeader } from '../components';
 
 export function Employees () {
   return (
     <div>
-
-      <h2
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 12,
-        }}
-      >
-        <UsersThree color="#2874A6 " fontSize={24} />
-        All employees
-      </h2>
-      <Link to={'/'}>Create employee</Link>
+      <ViewHeader
+        icon={CirclePlus}
+        iconColor="#239B56"
+        title="All employees"
+        linkText="Create employee"
+        linkTo="/"
+      />
+      <em>INSERT TABLE HERE...</em>
     </div>
   );
 }
