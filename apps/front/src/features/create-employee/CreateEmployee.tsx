@@ -4,8 +4,8 @@ import { UsersThree } from '@hrnet-aj/icons';
 import { Select } from '@hrnet-aj/select';
 import { Button, NumberField, TextField } from '@hrnet-aj/ui';
 
-import { COUNTRIES, DEPARTMENTS } from '../constants';
-import { ViewHeader } from '../components';
+import { COUNTRIES, DEPARTMENTS } from '../../constants';
+import { ViewHeader } from '../../components';
 
 export function CreateEmployee () {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

@@ -7,9 +7,11 @@ import '@hrnet-aj/date-picker/style.css';
 import '@hrnet-aj/modal/style.css';
 import '@hrnet-aj/select/style.css';
 import '@hrnet-aj/ui/style.css';
+
 import './assets/index.scss';
 
-import { CreateEmployee, Employees, Error as ErrorRoute, Root } from './routes';
+import { AppRoot } from './components';
+import { CreateEmployee, Employees, Error as ErrorView } from './features';
 
 const rootElement = document.getElementById('root');
 
@@ -20,8 +22,8 @@ if (!rootElement) {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    errorElement: <ErrorRoute />,
+    element: <AppRoot />,
+    errorElement: <ErrorView />,
     children: [
       {
         index: true,

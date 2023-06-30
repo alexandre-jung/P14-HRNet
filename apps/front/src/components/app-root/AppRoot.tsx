@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 
-export function Root () {
+export function AppRoot () {
   return (
     <div style={{ color: '#4f4f4f' }}>
       <Link to={'/'}>

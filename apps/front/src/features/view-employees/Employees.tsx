@@ -1,6 +1,6 @@
 import { CirclePlus } from '@hrnet-aj/icons';
 
-import { ViewHeader } from '../components';
+import { ViewHeader } from '../../components';
 
 export function Employees () {
   return (
