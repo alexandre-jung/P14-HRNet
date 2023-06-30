@@ -6,12 +6,22 @@ import { Button, NumberField, TextField } from '@hrnet-aj/ui';
 
 import { COUNTRIES, DEPARTMENTS } from '../../constants';
 import { ViewHeader } from '../../components';
+import { formDataToEmployee } from './utils';
+import { useEmployeeApi } from '../employee-provider';
+import { isEmployee } from '../employee-provider/utils';
 
 export function CreateEmployee () {
+  const { createEmployee } = useEmployeeApi();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log(Object.fromEntries(data.entries()));
+
+    const formData = new FormData(event.currentTarget);
+    const employee = formDataToEmployee(formData);
+
+    if (isEmployee(employee)) {
+      createEmployee(employee);
+    }
   };
 
   return (

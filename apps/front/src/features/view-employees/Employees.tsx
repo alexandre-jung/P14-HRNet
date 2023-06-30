@@ -1,8 +1,11 @@
 import { CirclePlus } from '@hrnet-aj/icons';
 
 import { ViewHeader } from '../../components';
+import { useEmployeeList } from '../employee-provider';
 
 export function Employees () {
+  const employees = useEmployeeList();
+
   return (
     <div>
       <ViewHeader
@@ -12,7 +15,12 @@ export function Employees () {
         linkText="Create employee"
         linkTo="/"
       />
-      <em>INSERT TABLE HERE...</em>
+      <p>
+        <em>INSERT TABLE HERE...</em>
+      </p>
+      <pre>
+        {JSON.stringify(employees, null, 2)}
+      </pre>
     </div>
   );
 }

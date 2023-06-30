@@ -11,7 +11,12 @@ import '@hrnet-aj/ui/style.css';
 import './assets/index.scss';
 
 import { AppRoot } from './components';
-import { CreateEmployee, Employees, Error as ErrorView } from './features';
+import {
+  CreateEmployee,
+  EmployeeProvider,
+  Employees,
+  Error as ErrorView,
+} from './features';
 
 const rootElement = document.getElementById('root');
 
@@ -39,6 +44,8 @@ const router = createBrowserRouter([
 
 createRoot(rootElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <EmployeeProvider>
+      <RouterProvider router={router} />
+    </EmployeeProvider>
   </React.StrictMode>,
 );
