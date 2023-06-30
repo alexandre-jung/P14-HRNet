@@ -45,7 +45,7 @@ export const DataFilter = <TItem extends Record<string, unknown>> ({
         filterOnKeys,
       );
     });
-  }, [data]);
+  }, [data, filter, filterOnKeys]);
 
   return <>{children(filteredData)}</>;
 };
