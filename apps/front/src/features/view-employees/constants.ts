@@ -15,6 +15,11 @@ export const filterOnKeys: (keyof Employee)[] = [
 
 export const columns: Column<keyof Employee>[] = [
   {
+    key: 'id',
+    title: 'ID',
+    numeric: true,
+  },
+  {
     key: 'lastName',
     title: 'Nom',
     sortable: true,

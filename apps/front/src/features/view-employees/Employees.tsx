@@ -89,7 +89,7 @@ export function Employees () {
                     <DataTable
                       data={paginatedData}
                       columns={columns}
-                      entryKey="firstName"
+                      entryKey="id"
                       sortKey={currentSort.key}
                       sortDirection={currentSort.direction}
                       onSortChange={handleSortChange}

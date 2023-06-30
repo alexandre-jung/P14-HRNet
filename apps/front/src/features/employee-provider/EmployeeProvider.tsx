@@ -5,9 +5,11 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { Employee } from './types';
+import { ContextDataType, Employee } from './types';
+import { useSaveContextDataInLocalStorage } from './hooks';
+import { getInitialContextValue } from './utils';
 
-const dataContext = createContext<Employee[] | null>(null);
+const dataContext = createContext<ContextDataType | null>(null);
 
 type EmployeeProviderProps = {
   children: JSX.Element
@@ -18,18 +20,32 @@ const apiContext = createContext<{
 } | null>(null);
 
 export function EmployeeProvider ({ children }: EmployeeProviderProps) {
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [data, setData] = useState(getInitialContextValue);
+
+  useSaveContextDataInLocalStorage(data);
 
   const handleCreateEmployee = useCallback((employee: Employee) => {
-    setEmployees(p => [...p, employee]);
-  }, [setEmployees]);
+    setData(({ employees, lastId }) => {
+      const id = lastId + 1;
+
+      employee.id = id;
+
+      return ({
+        lastId: id,
+        employees: [
+          ...employees,
+          employee,
+        ],
+      });
+    });
+  }, [setData]);
 
   const apiValue = useMemo(() => ({
     createEmployee: handleCreateEmployee,
   }), [handleCreateEmployee]);
 
   return (
-    <dataContext.Provider value={employees}>
+    <dataContext.Provider value={data}>
       <apiContext.Provider value={apiValue}>
         {children}
       </apiContext.Provider>
@@ -45,7 +61,7 @@ export function useEmployeeList () {
       'Context not found. Did you forget to wrap your application with EmployeeProvider?\n');
   }
 
-  return value;
+  return value.employees;
 }
 
 export function useEmployeeApi () {
