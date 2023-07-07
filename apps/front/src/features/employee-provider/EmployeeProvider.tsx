@@ -17,9 +17,10 @@ type EmployeeProviderProps = {
 
 const apiContext = createContext<{
   createEmployee: (employee: Employee) => void
+  removeEmployee: (id: number) => void
 } | null>(null);
 
-export function EmployeeProvider ({ children }: EmployeeProviderProps) {
+export function EmployeeProvider({ children }: EmployeeProviderProps) {
   const [data, setData] = useState(getInitialContextValue);
 
   useSaveContextDataInLocalStorage(data);
@@ -40,8 +41,20 @@ export function EmployeeProvider ({ children }: EmployeeProviderProps) {
     });
   }, [setData]);
 
+  const handleRemoveEmployee = useCallback((id: number) => {
+    setData(({ employees, ...rest }) => {
+      return {
+        ...rest,
+        employees: employees.filter(
+          employee => employee.id != id,
+        ),
+      };
+    });
+  }, [setData]);
+
   const apiValue = useMemo(() => ({
     createEmployee: handleCreateEmployee,
+    removeEmployee: handleRemoveEmployee,
   }), [handleCreateEmployee]);
 
   return (
@@ -53,7 +66,7 @@ export function EmployeeProvider ({ children }: EmployeeProviderProps) {
   );
 }
 
-export function useEmployeeList () {
+export function useEmployeeList() {
   const value = useContext(dataContext);
 
   if (value === null) {
@@ -64,7 +77,7 @@ export function useEmployeeList () {
   return value.employees;
 }
 
-export function useEmployeeApi () {
+export function useEmployeeApi() {
   const api = useContext(apiContext);
 
   if (api === null) {

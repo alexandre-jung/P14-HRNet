@@ -13,12 +13,13 @@ import {
 import { TextField } from '@hrnet-aj/ui';
 
 import { ViewHeader } from '../../components';
-import { useEmployeeList } from '../employee-provider';
+import { useEmployeeApi, useEmployeeList } from '../employee-provider';
 import { Employee } from '../employee-provider/types';
 import { columns, filterOnKeys, pageSizes } from './constants';
 
-export function Employees () {
+export function Employees() {
   const employees = useEmployeeList();
+  const { removeEmployee } = useEmployeeApi();
 
   const [currentFilter, setCurrentFilter] = useState('');
 
@@ -36,6 +37,12 @@ export function Employees () {
   const handleSortChange = (event: SortChangeEvent<Employee>) => {
     pagination.onPageChange(1);
     setCurrentSort(event);
+  };
+
+  const handleRemoveEmployee = (employee: Employee) => {
+    if (employee.id !== undefined) {
+      removeEmployee(employee.id);
+    }
   };
 
   return (
@@ -93,6 +100,7 @@ export function Employees () {
                       sortKey={currentSort.key}
                       sortDirection={currentSort.direction}
                       onSortChange={handleSortChange}
+                      onRemove={handleRemoveEmployee}
                     />
                   )}
                 </Pagination>
