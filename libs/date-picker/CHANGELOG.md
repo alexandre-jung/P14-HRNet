@@ -1,5 +1,13 @@
 # @hrnet-aj/ui
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @hrnet-aj/icons@1.1.0
+  - @hrnet-aj/utils@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

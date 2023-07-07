@@ -1,5 +1,11 @@
 # @hrnet-aj/data-table
 
+## 1.1.0
+
+### Minor Changes
+
+- Make table rows removable
+
 ## 1.0.1
 
 ### Patch Changes
