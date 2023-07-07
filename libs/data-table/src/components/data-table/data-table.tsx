@@ -3,12 +3,13 @@ import classNames from 'classnames';
 import { SortIcon } from '../sort-icon/sort-icon';
 import { DataTableProps, SortDirection } from './data-table.types';
 import styles from './data-table.module.scss';
+import { Trash } from '@hrnet-aj/icons';
 
-function isValidKey (k: unknown): k is string | number {
+function isValidKey(k: unknown): k is string | number {
   return typeof k == 'string' || typeof k == 'number';
 }
 
-function isBoolean (o: unknown): o is boolean {
+function isBoolean(o: unknown): o is boolean {
   return typeof o == 'boolean';
 }
 
@@ -16,7 +17,7 @@ function isBoolean (o: unknown): o is boolean {
  * A table that displays an array of data objects,
  * with sorting indicators in the headers.
  */
-export default function DataTable<TItem extends Record<string, unknown>> ({
+export default function DataTable<TItem extends Record<string, unknown>>({
   className,
   data,
   columns,
@@ -24,6 +25,7 @@ export default function DataTable<TItem extends Record<string, unknown>> ({
   sortDirection = null,
   entryKey,
   onSortChange,
+  onRemove,
 }: DataTableProps<TItem>) {
   const getNextSortDirection = (): SortDirection | null => {
     if (sortDirection == 'asc') return 'desc';
@@ -107,6 +109,27 @@ export default function DataTable<TItem extends Record<string, unknown>> ({
                   </td>;
                 }
               })}
+              {onRemove && <td
+                  className={classNames(
+                    styles.DataCell,
+                    styles.ActionCell,
+                  )}
+              >
+                  <button
+                      onClick={() => onRemove(dataEntry)}
+                      title={`Supprimer ${
+                        dataEntry['firstName']
+                      } ${
+                        dataEntry['lastName']
+                      }`}
+                  >
+                      <Trash
+                          color="red"
+                          width={20}
+                          height={20}
+                      />
+                  </button>
+              </td>}
             </tr>
           );
         })}

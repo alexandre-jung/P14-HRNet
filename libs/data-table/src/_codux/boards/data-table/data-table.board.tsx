@@ -1,14 +1,19 @@
 import { createBoard } from '@wixc3/react-board';
-import { columns, data, DataItem, DataSort, DataTable, Pagination, SortChangeEvent } from '../../..';
+import {
+  columns,
+  data,
+  DataFilter,
+  DataItem,
+  DataSort,
+  DataTable,
+  Pagination,
+  SortChangeEvent,
+} from '../../..';
 import { useDataTableSort, usePagination } from '../../../hooks';
-import { DataFilter } from '../../../components/data-filter/data-filter';
 
 const pageSizes = [2, 4, 6, 8] as const;
 
-const filterOnKeys: (keyof DataItem)[] = [
-  'firstName',
-  'lastName',
-];
+const filterOnKeys: (keyof DataItem)[] = ['firstName', 'lastName'];
 
 export default createBoard({
   name: 'data-table/DataTable',
@@ -35,7 +40,7 @@ export default createBoard({
         filter="e"
         filterOnKeys={filterOnKeys}
       >
-        {filteredData =>
+        {filteredData => (
           <DataSort
             data={filteredData}
             sortKey={currentSort.key}
@@ -59,11 +64,13 @@ export default createBoard({
                     sortKey={currentSort.key}
                     sortDirection={currentSort.direction}
                     onSortChange={handleSortChange}
+                    onRemove={(entry) => alert(`Remove ${entry.id}`)}
                   />
                 )}
               </Pagination>
             )}
-          </DataSort>}
+          </DataSort>
+        )}
       </DataFilter>
     );
   },

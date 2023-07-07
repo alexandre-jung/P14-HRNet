@@ -28,6 +28,7 @@ export type DataTableProps<TItem extends Record<string, unknown>> = {
   sortKey?: keyof TItem | null;
   sortDirection?: SortDirection | null;
   onSortChange?: SortChangeEventHandler<TItem>;
+  onRemove?: (entry: TItem) => void;
 }
 
 /** The function called when the user wants to change the sorting */
