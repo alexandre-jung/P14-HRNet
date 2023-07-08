@@ -21,7 +21,7 @@ export const NumberField = ({
   label,
   onChange,
   required,
-  value: ValueProp,
+  value: valueProp,
   ...restProps
 }: NumberFieldProps) => {
   const [value, setValue] = useState(defaultValue ?? '');
@@ -37,6 +37,8 @@ export const NumberField = ({
       onChange(valueAsNumber);
     }
   };
+
+  const actualValue = valueProp !== undefined ? valueProp : value;
 
   return (
     <div className={_classNames(styles.root, classNames?.root)}>
@@ -55,7 +57,7 @@ export const NumberField = ({
         onChange={handleChange}
         required={required}
         type="number"
-        value={value}
+        value={actualValue ?? ''}
         {...restProps}
       />
     </div>
