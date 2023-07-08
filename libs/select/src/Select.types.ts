@@ -7,9 +7,11 @@ export type Option = {
 
 export type Options = Option[]
 
-export type SelectProps = JSX.IntrinsicElements['select'] & {
+export type SelectProps = Omit<JSX.IntrinsicElements['select'], 'value' | 'onChange'> & {
   inputStyle?: CSSProperties;
   label?: string;
   options: Options
   placeholder?: string
+  value?: string
+  onChange?: (value: string) => void
 }

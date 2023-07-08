@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { SelectProps } from './Select.types';
 import styles from './styles.module.css';
 
-export default function Select ({
+export default function Select({
   className,
   label: labelProp,
   name,
@@ -12,10 +12,11 @@ export default function Select ({
   placeholder,
   required,
   inputStyle,
+  value: controlledValue,
+  onChange,
 }: SelectProps) {
   const id = useId();
   const [value, setValue] = useState<string | number | null>(null);
-  const [label, setLabel] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
@@ -25,11 +26,18 @@ export default function Select ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleValueChange = (value: string) => {
+    if (onChange) {
+      onChange(value);
+    }
+
     setValue(value);
     if (inputRef.current) {
       inputRef.current.value = value;
     }
   };
+
+  const actualValue = controlledValue ?? value;
+  const actualLabel = options.find(o => o.value === actualValue)?.label ?? '';
 
   return (
     <div className={classNames(styles.select, className)}>
@@ -59,19 +67,18 @@ export default function Select ({
             setActive((active + 1) % options.length);
           } else if (event.key == 'Enter') {
             handleValueChange(options[active].value.toString());
-            setLabel(options[active].label);
             close();
           } else if (event.key == 'Escape') {
             close();
           }
         }}
         style={{
-          color: value === null ? 'gray' : 'black',
-          fontStyle: value === null ? 'italic' : 'normal',
+          color: !actualValue ? 'gray' : 'black',
+          fontStyle: !actualValue ? 'italic' : 'normal',
           ...inputStyle,
         }}
       >
-        {value === null ? placeholder : label}
+        {!actualValue ? placeholder : actualLabel}
       </div>
       <div
         className={styles.dropdown}
@@ -86,7 +93,6 @@ export default function Select ({
             key={option.value}
             onMouseDown={(event) => {
               event.preventDefault();
-              setLabel(option.label);
               handleValueChange(option.value.toString());
               close();
             }}
@@ -101,6 +107,7 @@ export default function Select ({
         name={name}
         readOnly
         ref={inputRef}
+        value={actualValue ?? ''}
       />
     </div>
   );
