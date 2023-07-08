@@ -187,11 +187,11 @@ export function CreateEmployee() {
           onChange={setDepartment}
         />
 
-        <Button type="submit" style={{ marginTop: 25 }}>
+        <Button
+          type="submit"
+          style={{ marginTop: 25 }}
+        >
           Save
-        </Button>
-        <Button type="reset">
-          Reset
         </Button>
       </form>
     </div>
