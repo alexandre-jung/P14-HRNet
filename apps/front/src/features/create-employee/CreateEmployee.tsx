@@ -38,10 +38,12 @@ export function CreateEmployee() {
     }
   };
 
+  const [zipCode, setZipCode] = useState<number | null | undefined>(null);
   const [country, setCountry] = useState('');
   const [department, setDepartment] = useState('');
 
   const handleReset = () => {
+    setZipCode(null);
     setCountry('');
     setDepartment('');
   };
@@ -154,6 +156,8 @@ export function CreateEmployee() {
               min={0}
               required
               placeholder="75001"
+              value={zipCode}
+              onChange={setZipCode}
             />
           </div>
 
