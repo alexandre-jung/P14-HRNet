@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 import { UsersThree } from '@hrnet-aj/icons';
 import { Modal } from '@hrnet-aj/modal';
@@ -15,6 +15,7 @@ export function CreateEmployee() {
   const { createEmployee } = useEmployeeApi();
   const [showModal, setShowModal] = useState(false);
   const [fullName, setFullName] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleShowModal = () => setShowModal(true);
   const handleHideModal = () => {
@@ -32,7 +33,17 @@ export function CreateEmployee() {
       createEmployee(employee);
       setFullName(`${employee.firstName} ${employee.lastName}`);
       handleShowModal();
+      formRef.current?.reset();
+      handleReset();
     }
+  };
+
+  const [country, setCountry] = useState('');
+  const [department, setDepartment] = useState('');
+
+  const handleReset = () => {
+    setCountry('');
+    setDepartment('');
   };
 
   return (
@@ -60,6 +71,7 @@ export function CreateEmployee() {
       />
       <form
         onSubmit={handleSubmit}
+        ref={formRef}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -154,6 +166,8 @@ export function CreateEmployee() {
             placeholder="Select the country..."
             required
             inputStyle={{ backgroundColor: 'white' }}
+            value={country}
+            onChange={setCountry}
           />
         </fieldset>
 
@@ -165,10 +179,15 @@ export function CreateEmployee() {
           }))}
           required
           placeholder="Select the department..."
+          value={department}
+          onChange={setDepartment}
         />
 
         <Button type="submit" style={{ marginTop: 25 }}>
           Save
+        </Button>
+        <Button type="reset">
+          Reset
         </Button>
       </form>
     </div>
