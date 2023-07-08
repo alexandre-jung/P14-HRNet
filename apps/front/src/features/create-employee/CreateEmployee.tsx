@@ -1,6 +1,7 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 
 import { UsersThree } from '@hrnet-aj/icons';
+import { Modal } from '@hrnet-aj/modal';
 import { Select } from '@hrnet-aj/select';
 import { Button, NumberField, TextField } from '@hrnet-aj/ui';
 
@@ -10,8 +11,16 @@ import { formDataToEmployee } from './utils';
 import { useEmployeeApi } from '../employee-provider';
 import { isEmployee } from '../employee-provider/utils';
 
-export function CreateEmployee () {
+export function CreateEmployee() {
   const { createEmployee } = useEmployeeApi();
+  const [showModal, setShowModal] = useState(false);
+  const [fullName, setFullName] = useState('');
+
+  const handleShowModal = () => setShowModal(true);
+  const handleHideModal = () => {
+    setShowModal(false);
+    setFullName('');
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,11 +30,27 @@ export function CreateEmployee () {
 
     if (isEmployee(employee)) {
       createEmployee(employee);
+      setFullName(`${employee.firstName} ${employee.lastName}`);
+      handleShowModal();
     }
   };
 
   return (
     <div>
+      <Modal
+        id="confirmation-modal"
+        show={showModal}
+        onClose={handleHideModal}
+        centered
+        style={{ width: 400 }}
+      >
+        <Modal.Header closeButton>
+          Employé créé
+        </Modal.Header>
+        <p>
+          L'employé {fullName} a été enregistré !
+        </p>
+      </Modal>
       <ViewHeader
         icon={UsersThree}
         iconColor="#2874A6"

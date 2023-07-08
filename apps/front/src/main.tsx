@@ -17,6 +17,7 @@ import {
   Employees,
   Error as ErrorView,
 } from './features';
+import { Layer } from '@hrnet-aj/modal';
 
 const rootElement = document.getElementById('root');
 
@@ -45,7 +46,9 @@ const router = createBrowserRouter([
 createRoot(rootElement).render(
   <React.StrictMode>
     <EmployeeProvider>
-      <RouterProvider router={router} />
+      <Layer id="modal-layer">
+        <RouterProvider router={router} />
+      </Layer>
     </EmployeeProvider>
   </React.StrictMode>,
 );
