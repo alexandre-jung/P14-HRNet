@@ -1,5 +1,6 @@
 import { Button, NumberField, TextField } from '@hrnet-aj/ui';
 import { Select } from '@hrnet-aj/select';
+
 import { COUNTRIES, DEPARTMENTS } from '../../../constants';
 import { FormEvent, RefObject, useState } from 'react';
 import { formDataToEmployee } from '../utils';
@@ -10,11 +11,13 @@ import styles from './styles.module.scss';
 
 type CreateEmployeeFormProps = {
   onSubmitSuccess: (employee: Employee) => void
+  onSubmitError: () => void
   formRef: NonNullable<RefObject<HTMLFormElement>>
 }
 
 export const CreateEmployeeForm = ({
   onSubmitSuccess,
+  onSubmitError,
   formRef,
 }: CreateEmployeeFormProps) => {
   const [zipCode, setZipCode] = useState<number | null | undefined>(null);
@@ -31,6 +34,8 @@ export const CreateEmployeeForm = ({
       onSubmitSuccess(employee);
       formRef.current?.reset();
       handleReset();
+    } else {
+      onSubmitError();
     }
   };
 

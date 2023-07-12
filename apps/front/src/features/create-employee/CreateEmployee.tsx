@@ -1,27 +1,36 @@
 import { useRef, useState } from 'react';
 
 import { UsersThree } from '@hrnet-aj/icons';
+
 import { ViewHeader } from '../../components';
 import { useEmployeeApi } from '../employee-provider';
-import { SuccessModal } from './SuccessModal';
+import { CreateEmployeeFeedbackModal } from './CreateEmployeeFeedbackModal';
 import { CreateEmployeeForm } from './CreateEmployeeForm';
 import { Employee } from '../employee-provider/types';
+import { FeedbackType } from './types';
 
 export function CreateEmployee() {
   const { createEmployee } = useEmployeeApi();
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackModalType, setFeedbackModalType] = useState<FeedbackType>('success');
   const [fullName, setFullName] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleShowModal = () => setShowSuccessModal(true);
+  const handleShowModal = () => setShowFeedbackModal(true);
   const handleHideModal = () => {
-    setShowSuccessModal(false);
+    setShowFeedbackModal(false);
     setFullName('');
   };
 
   const handleSubmitSuccess = (employee: Employee) => {
+    setFeedbackModalType('success');
     createEmployee(employee);
     setFullName(`${employee.firstName} ${employee.lastName}`);
+    handleShowModal();
+  };
+
+  const handleSubmitError = () => {
+    setFeedbackModalType('error');
     handleShowModal();
   };
 
@@ -36,10 +45,12 @@ export function CreateEmployee() {
       />
       <CreateEmployeeForm
         onSubmitSuccess={handleSubmitSuccess}
+        onSubmitError={handleSubmitError}
         formRef={formRef}
       />
-      <SuccessModal
-        show={showSuccessModal}
+      <CreateEmployeeFeedbackModal
+        type={feedbackModalType}
+        show={showFeedbackModal}
         onClose={handleHideModal}
         fullName={fullName}
       />
