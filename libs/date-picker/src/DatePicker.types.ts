@@ -31,4 +31,6 @@ export interface DatePickerProps extends Meta {
   onChange: (date: Date) => void;
   className?: string;
   style?: CSSProperties;
+  name?: string;
+  inputClassName?: string;
 }

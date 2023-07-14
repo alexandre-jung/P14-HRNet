@@ -13,7 +13,9 @@ const externalModules = [
   'classnames',
   'jest',
   'tslib',
+  '@hrnet-aj/date-picker',
   '@hrnet-aj/icons',
+  '@hrnet-aj/utils',
 ];
 
 /**

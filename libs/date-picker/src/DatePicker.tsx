@@ -18,7 +18,7 @@ import styles from './styles.module.css';
 
 const datePickerContext = createContext<Context | null>(null);
 
-export function DatePicker ({
+export function DatePicker({
   children,
   date,
   minYear,
@@ -26,6 +26,8 @@ export function DatePicker ({
   onChange,
   className,
   style,
+  name,
+  inputClassName,
 }: DatePickerProps) {
   const meta = { minYear, maxYear };
 
@@ -73,6 +75,8 @@ export function DatePicker ({
   return (
     <datePickerContext.Provider value={value}>
       <input
+        className={inputClassName}
+        name={name}
         type="text"
         value={formattedDate}
         readOnly
@@ -99,7 +103,7 @@ export function DatePicker ({
   );
 }
 
-export function useDatePicker () {
+export function useDatePicker() {
   const context = useContext(datePickerContext);
   if (!context) {
     throw new Error(

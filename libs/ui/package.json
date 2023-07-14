@@ -36,6 +36,8 @@
     "tslib": "^2.6.0"
   },
   "devDependencies": {
+    "@hrnet-aj/date-picker": "workspace:*",
+    "@hrnet-aj/utils": "workspace:*",
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.4.3",

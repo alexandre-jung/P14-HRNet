@@ -1,4 +1,4 @@
-import { Button, NumberField, TextField } from '@hrnet-aj/ui';
+import { Button, DatePickerField, NumberField, TextField } from '@hrnet-aj/ui';
 import { Select } from '@hrnet-aj/select';
 
 import { COUNTRIES, DEPARTMENTS } from '../../../constants';
@@ -66,6 +66,25 @@ export const CreateEmployeeForm = ({
           required
           style={{ flex: '1 1 auto' }}
           placeholder="François"
+        />
+      </div>
+
+      <div className={styles.nameGroup}>
+        <DatePickerField
+          minYear={1900}
+          maxYear={2050}
+          label="Date de naissance"
+          name="birthDate"
+          required
+          style={{ flex: '1 1 auto' }}
+        />
+        <DatePickerField
+          minYear={1900}
+          maxYear={2050}
+          label="Date de démarrage"
+          name="startDate"
+          required
+          style={{ flex: '1 1 auto' }}
         />
       </div>
 

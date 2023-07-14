@@ -1,11 +1,13 @@
 import { DEPARTMENTS } from '../../constants';
 import { ContextDataType, Employee } from './types';
 
-export function isEmployee (data: unknown): data is Employee {
+export function isEmployee(data: unknown): data is Employee {
   return (
     data !== null && typeof data == 'object' &&
     'firstName' in data && typeof data.firstName == 'string' &&
     'lastName' in data && typeof data.lastName == 'string' &&
+    'birthDate' in data && typeof data.birthDate == 'string' &&
+    'startDate' in data && typeof data.startDate == 'string' &&
     'street' in data && typeof data.street == 'string' &&
     'city' in data && typeof data.city == 'string' &&
     'zipCode' in data && typeof data.zipCode == 'number' &&
@@ -14,7 +16,7 @@ export function isEmployee (data: unknown): data is Employee {
   );
 }
 
-export function getInitialContextValue (): ContextDataType {
+export function getInitialContextValue(): ContextDataType {
   const savedEmployees = localStorage.getItem('employeeData');
 
   if (savedEmployees) {

@@ -21,6 +21,7 @@ export default function SideControls({
         style={style}
         onClick={onPrevious}
         disabled={previousDisabled}
+        type="button"
       >
         <CaretLeft
           width={CARET_SIZE}
@@ -33,6 +34,7 @@ export default function SideControls({
         style={style}
         onClick={onNext}
         disabled={nextDisabled}
+        type="button"
       >
         <CaretRight
           width={CARET_SIZE}

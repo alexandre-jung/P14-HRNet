@@ -1,6 +1,8 @@
-export function formDataToEmployee (formData: FormData) {
+export function formDataToEmployee(formData: FormData) {
   const firstName = formData.get('firstName');
   const lastName = formData.get('lastName');
+  const birthDate = formData.get('birthDate');
+  const startDate = formData.get('startDate');
   const street = formData.get('street');
   const city = formData.get('city');
   const rawZipCode = formData.get('zipCode');
@@ -11,6 +13,8 @@ export function formDataToEmployee (formData: FormData) {
   return {
     firstName,
     lastName,
+    birthDate,
+    startDate,
     street,
     city,
     zipCode,

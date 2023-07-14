@@ -27,6 +27,7 @@ export default function Today({ className, style }: TodayProps) {
       className={`${styles.Today} ${className}`}
       style={style}
       onClick={handleClick}
+      type="button"
     >
       <House
         width={18}

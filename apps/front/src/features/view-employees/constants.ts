@@ -20,13 +20,23 @@ export const columns: Column<keyof Employee>[] = [
     numeric: true,
   },
   {
+    key: 'firstName',
+    title: 'Prénom',
+    sortable: true,
+  },
+  {
     key: 'lastName',
     title: 'Nom',
     sortable: true,
   },
   {
-    key: 'firstName',
-    title: 'Prénom',
+    key: 'birthDate',
+    title: 'Date de naissance',
+    sortable: true,
+  },
+  {
+    key: 'startDate',
+    title: 'Date de démarrage',
     sortable: true,
   },
   {
