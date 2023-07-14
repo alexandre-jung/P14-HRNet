@@ -54,7 +54,8 @@ export function DatePicker ({
     onOpenChange: setIsOpen,
     middleware: [offset(15), flip()],
     whileElementsMounted: autoUpdate,
-  });
+    // FIXME why is the cast to any required?
+  } as any);
 
   // FIXME why is the cast to any required?
   const focus = useFocus(context as any, { keyboardOnly: false });

@@ -17,15 +17,14 @@
     "@hrnet-aj/select": "workspace:*",
     "@hrnet-aj/ui": "workspace:*",
     "@hrnet-aj/utils": "workspace:*",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rimraf": "^4.1.2",
-    "sass": "^1.58.3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.1",
-    "vite-plugin-svgr": "^2.4.0"
+    "rimraf": "^5.0.1",
+    "sass": "^1.63.6",
+    "vite": "^4.4.4",
+    "vite-plugin-svgr": "^3.2.0"
   }
 }
