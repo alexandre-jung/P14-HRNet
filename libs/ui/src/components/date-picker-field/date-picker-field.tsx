@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, RefObject, useImperativeHandle, useState } from 'react';
 
 import _classNames from 'classnames';
 
@@ -16,6 +16,11 @@ type DatePickerProps = {
   style?: CSSProperties
   inputClassName?: string
   placeholder?: string
+  apiRef?: RefObject<{ clear: () => void }>
+}
+
+export type Handle = {
+  clear: () => void
 }
 
 export function DatePickerField({
@@ -27,6 +32,7 @@ export function DatePickerField({
   style,
   inputClassName,
   placeholder,
+  apiRef,
 }: DatePickerProps) {
   const [date, setDate] = useState<Date | null>(null);
 
@@ -38,6 +44,12 @@ export function DatePickerField({
     ...date,
     year: clamp(date.year, minYear, maxYear),
   };
+
+  useImperativeHandle(apiRef, () => {
+    return {
+      clear: () => setDate(null),
+    };
+  }, []);
 
   return (
     <div

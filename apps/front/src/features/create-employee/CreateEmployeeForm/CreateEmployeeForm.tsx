@@ -1,8 +1,8 @@
-import { Button, DatePickerField, NumberField, TextField } from '@hrnet-aj/ui';
+import { Button, DatePickerField, Handle, NumberField, TextField } from '@hrnet-aj/ui';
 import { Select } from '@hrnet-aj/select';
 
 import { COUNTRIES, DEPARTMENTS } from '../../../constants';
-import { FormEvent, RefObject, useState } from 'react';
+import { FormEvent, RefObject, useRef, useState } from 'react';
 import { formDataToEmployee } from '../utils';
 import { isEmployee } from '../../employee-provider/utils';
 import { Employee } from '../../employee-provider/types';
@@ -24,6 +24,9 @@ export const CreateEmployeeForm = ({
   const [country, setCountry] = useState('');
   const [department, setDepartment] = useState('');
 
+  const birthDateHandle = useRef<Handle>(null);
+  const startDateHandle = useRef<Handle>(null);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -43,6 +46,8 @@ export const CreateEmployeeForm = ({
     setZipCode(null);
     setCountry('');
     setDepartment('');
+    birthDateHandle.current?.clear();
+    startDateHandle.current?.clear();
   };
 
   return (
@@ -76,6 +81,7 @@ export const CreateEmployeeForm = ({
           label="Date de naissance"
           name="birthDate"
           placeholder="JJ/MM/AAAA"
+          apiRef={birthDateHandle}
           required
           style={{ flex: '1 1 auto' }}
         />
@@ -85,6 +91,7 @@ export const CreateEmployeeForm = ({
           label="Date de démarrage"
           name="startDate"
           placeholder="JJ/MM/AAAA"
+          apiRef={startDateHandle}
           required
           style={{ flex: '1 1 auto' }}
         />
