@@ -2,6 +2,7 @@ import { useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { SelectProps } from './Select.types';
+import { scrollOptionIntoViewCenter } from './Select.hooks';
 import styles from './styles.module.css';
 
 export default function Select({
@@ -38,6 +39,8 @@ export default function Select({
 
   const actualValue = controlledValue ?? value;
   const actualLabel = options.find(o => o.value === actualValue)?.label ?? '';
+
+  scrollOptionIntoViewCenter(options, active);
 
   return (
     <div className={classNames(styles.select, className)}>
@@ -90,6 +93,7 @@ export default function Select({
         {options.map((option, index) => (
           <div
             className={`${styles.option} ${index == active ? styles.active : ''}`}
+            id={option.value.toString()}
             key={option.value}
             onMouseDown={(event) => {
               event.preventDefault();
