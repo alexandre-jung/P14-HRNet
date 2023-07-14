@@ -1,5 +1,11 @@
 # @hrnet-aj/icons
 
+## 2.0.0
+
+### Major Changes
+
+- add date fields
+
 ## 1.1.0
 
 ### Minor Changes

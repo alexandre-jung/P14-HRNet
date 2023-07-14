@@ -1,6 +1,6 @@
 {
   "name": "@hrnet-aj/ui",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "React components for the UI of the HRNet application",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
