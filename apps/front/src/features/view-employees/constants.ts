@@ -32,12 +32,10 @@ export const columns: Column<keyof Employee>[] = [
   {
     key: 'birthDate',
     title: 'Date de naissance',
-    sortable: true,
   },
   {
     key: 'startDate',
     title: 'Date de démarrage',
-    sortable: true,
   },
   {
     key: 'street',
