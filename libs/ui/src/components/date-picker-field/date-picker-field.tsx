@@ -15,6 +15,7 @@ type DatePickerProps = {
   maxYear: number
   style?: CSSProperties
   inputClassName?: string
+  placeholder?: string
 }
 
 export function DatePickerField({
@@ -25,21 +26,15 @@ export function DatePickerField({
   maxYear,
   style,
   inputClassName,
+  placeholder,
 }: DatePickerProps) {
-  const [date, setDate] = useState(() => {
-    const today = new Date();
-    return ({
-      year: today.getFullYear(),
-      month: today.getMonth(),
-      day: today.getDate(),
-    });
-  });
+  const [date, setDate] = useState<Date | null>(null);
 
   const handleChange = (date: Date) => {
     setDate(date);
   };
 
-  const validDate = {
+  const validDate = date && {
     ...date,
     year: clamp(date.year, minYear, maxYear),
   };
@@ -62,6 +57,7 @@ export function DatePickerField({
         minYear={minYear}
         maxYear={maxYear}
         name={name}
+        placeholder={placeholder}
         inputClassName={_classNames(
           styles.input,
           inputClassName,

@@ -24,18 +24,19 @@ export function DatePicker({
   minYear,
   maxYear,
   onChange,
-  className,
   style,
   name,
   inputClassName,
+  placeholder,
 }: DatePickerProps) {
   const meta = { minYear, maxYear };
 
   const setDate = (date: Date) => onChange(limitDayForCurrentMonth(date));
-  const previousYear = () => api.computePreviousYear(date, meta, onChange);
-  const nextYear = () => api.computeNextYear(date, meta, onChange);
-  const previousMonth = () => api.computePreviousMonth(date, meta, onChange);
-  const nextMonth = () => api.computeNextMonth(date, meta, onChange);
+
+  const previousYear = () => date && api.computePreviousYear(date, meta, onChange);
+  const nextYear = () => date && api.computeNextYear(date, meta, onChange);
+  const previousMonth = () => date && api.computePreviousMonth(date, meta, onChange);
+  const nextMonth = () => date && api.computeNextMonth(date, meta, onChange);
 
   const value = {
     date,
@@ -68,9 +69,12 @@ export function DatePicker({
     getFloatingProps,
   } = useInteractions([focus, dismiss, click]);
 
-  const formattedDay = (date.day).toString().padStart(2, '0');
-  const formattedMonth = (date.month + 1).toString().padStart(2, '0');
-  const formattedDate = `${formattedDay}/${formattedMonth}/${date.year}`;
+  let formattedDate: string | null = null;
+  if (date) {
+    const formattedDay = (date.day).toString().padStart(2, '0');
+    const formattedMonth = (date.month + 1).toString().padStart(2, '0');
+    formattedDate = `${formattedDay}/${formattedMonth}/${date.year}`;
+  }
 
   return (
     <datePickerContext.Provider value={value}>
@@ -78,7 +82,8 @@ export function DatePicker({
         className={inputClassName}
         name={name}
         type="text"
-        value={formattedDate}
+        value={formattedDate ?? ''}
+        placeholder={placeholder}
         readOnly
         ref={refs.setReference}
         {...getReferenceProps()}
@@ -110,5 +115,21 @@ export function useDatePicker() {
       'DatePicker.* components must be rendered as children of DatePicker',
     );
   }
-  return context;
+
+  const { date, ...rest } = context;
+
+  if (!date) {
+    const today = new Date();
+
+    return {
+      date: {
+        year: today.getFullYear(),
+        month: today.getMonth(),
+        day: today.getDate(),
+      },
+      ...rest,
+    };
+  }
+
+  return { date, ...rest };
 }

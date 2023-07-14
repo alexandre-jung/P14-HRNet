@@ -6,8 +6,8 @@ export function isEmployee(data: unknown): data is Employee {
     data !== null && typeof data == 'object' &&
     'firstName' in data && typeof data.firstName == 'string' &&
     'lastName' in data && typeof data.lastName == 'string' &&
-    'birthDate' in data && typeof data.birthDate == 'string' &&
-    'startDate' in data && typeof data.startDate == 'string' &&
+    'birthDate' in data && typeof data.birthDate == 'string' && !!data.birthDate &&
+    'startDate' in data && typeof data.startDate == 'string' && !!data.startDate &&
     'street' in data && typeof data.street == 'string' &&
     'city' in data && typeof data.city == 'string' &&
     'zipCode' in data && typeof data.zipCode == 'number' &&

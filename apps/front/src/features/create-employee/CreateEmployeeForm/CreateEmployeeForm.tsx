@@ -75,6 +75,7 @@ export const CreateEmployeeForm = ({
           maxYear={2050}
           label="Date de naissance"
           name="birthDate"
+          placeholder="JJ/MM/AAAA"
           required
           style={{ flex: '1 1 auto' }}
         />
@@ -83,6 +84,7 @@ export const CreateEmployeeForm = ({
           maxYear={2050}
           label="Date de démarrage"
           name="startDate"
+          placeholder="JJ/MM/AAAA"
           required
           style={{ flex: '1 1 auto' }}
         />
