@@ -2,38 +2,51 @@
 
 **Monorepo of the HRNet application.**
 
-It contains the following projects:
+It contains the following packages:
 
-- `front` the front-end of the HRNet application
-- `icons` all the icons used by HRNet
-- `ui` the UI library
+- `apps/front` the front-end of HRNet
+
+
+- `lib/data-table` a table react component for displaying data
+- `lib/date-picker` a table react component for selecting dates
+- `lib/icons` the icon library for HRNet
+- `lib/modal` a modal component for react
+- `lib/select` a select component for react
+- `lib/ui` the UI library containing the most common components
+- `lib/utils` general utility functions
 
 ## 🪧 Table of contents
 
 1. [Requirements](#requirements)
 2. [🔥 Getting started](#-getting-started)
-   - [🔧 Build](#-build)
-   - [👷 Development](#-development)
-   - [🚀 Publish](#-publish)
+    - [🔧 Build](#-build)
+    - [👷 Development](#-development)
+    - [🚀 Publish](#-publish)
 
 ## Requirements
 
-- [NodeJS](https://nodejs.org/en/) 16+
-- [pnpm](https://pnpm.io/fr/) 7+
-- [Turborepo](https://turbo.build/repo) 1.7+
+- [NodeJS](https://nodejs.org/en/) 18+
+- [pnpm](https://pnpm.io/fr/) 8+
 
 ## 🔥 Getting started
 
 ```shell
 pnpm install
+pnpm build:all  # required only after pnpm install
 ```
 
 ### 👷 Development
 
 ```shell
-pnpm dev:front
-pnpm dev:storybook
+pnpm dev:front  # run the development mode
 ```
+
+Visit http://localhost:5173/.
+
+> **_Warning_**  
+> Since it is a monorepo, development involves many tasks,  
+> therefore you may have to wait a bit and refresh the page before viewing it without errors.  
+> _This does not apply to build mode._
 
 > **_Note_**  
 > The `icons` package does not have a watch mode yet.  
@@ -43,18 +56,17 @@ pnpm dev:storybook
 
 ```shell
 pnpm build:front
-pnpm build:storybook
 # Or
 pnpm build:all
 ```
 
-Then preview the built applications:
+Then preview the built application:
 
 ```shell
 pnpm preview:front
-# Or
-pnpm preview:storybook
 ```
+
+Visit http://localhost:4173/.
 
 ## 🚀 Publish
 
