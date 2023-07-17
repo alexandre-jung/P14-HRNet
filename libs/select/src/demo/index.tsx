@@ -1,16 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import Select from '../Select';
-
-const options = [
-  { label: '🎉 initial commit', value: 'initialCommit' },
-  { label: '📦️ feat: add date-picker package', value: 'addDatePicker' },
-  { label: '🚚 chore: rename packages', value: 'renamePackages' },
-  { label: '♻️ refactor(date-picker): refactor package', value: 'refactorDatePickerPackage' },
-  { label: '✨ feat(icons): add assets', value: 'addAssets' },
-  { label: '💄 style(date-picker): style MonthSelect', value: 'styleMonthSelect' },
-];
+import { Select } from '../components';
+import { options } from '../mocks';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

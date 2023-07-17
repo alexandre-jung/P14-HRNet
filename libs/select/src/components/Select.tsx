@@ -5,7 +5,7 @@ import { SelectProps } from './Select.types';
 import { scrollOptionIntoViewCenter } from './Select.hooks';
 import styles from './styles.module.css';
 
-export default function Select({
+export function Select({
   className,
   defaultValue,
   label: labelProp,
