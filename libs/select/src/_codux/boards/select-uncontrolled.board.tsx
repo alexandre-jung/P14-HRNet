@@ -19,6 +19,7 @@ export default createBoard({
       name="commitMessage"
       options={options}
       placeholder="Select a commit message"
+      defaultValue="addAssets"
       required
     />
   ),

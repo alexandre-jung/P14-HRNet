@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 
 export default function Select({
   className,
+  defaultValue,
   label: labelProp,
   name,
   options,
@@ -17,7 +18,7 @@ export default function Select({
   onChange,
 }: SelectProps) {
   const id = useId();
-  const [value, setValue] = useState<string | number | null>(null);
+  const [value, setValue] = useState<string | number | null>(defaultValue ?? null);
   const [isOpen, setIsOpen] = useState(false);
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
