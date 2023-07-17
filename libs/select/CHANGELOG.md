@@ -1,5 +1,11 @@
 # @hrnet-aj/select
 
+## 2.0.2
+
+### Patch Changes
+
+- add link to GitHub
+
 ## 2.0.1
 
 ### Patch Changes
