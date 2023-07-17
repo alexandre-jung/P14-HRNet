@@ -18,6 +18,10 @@
       "require": "./dist/style.css"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandre-jung/P14-HRNet/tree/d7c6e6aca796bd0cb0ef94b03d135178eb3b7c11/libs/select"
+  },
   "scripts": {
     "clean": "rimraf dist dist",
     "dev-standalone": "vite",
