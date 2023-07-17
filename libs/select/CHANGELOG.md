@@ -1,5 +1,11 @@
 # @hrnet-aj/select
 
+## 2.0.3
+
+### Patch Changes
+
+- fix repository information
+
 ## 2.0.2
 
 ### Patch Changes
