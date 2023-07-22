@@ -7,16 +7,19 @@ export function useSaveContextDataInLocalStorage (data: ContextDataType) {
   useEffect(() => {
     if (canSaveDataRef.current) return;
 
-    const savedData = localStorage.getItem('employeeData');
+    const savedDataString = localStorage.getItem('employeeData');
 
-    if (!savedData) {
+    if (!savedDataString) {
       canSaveDataRef.current = true;
       return;
     }
 
-    const lastSavedId = JSON.parse(savedData).lastId;
+    const savedData = JSON.parse(savedDataString);
+    const isModifyingEmployeeList = (
+      data.employees.length !== savedData.employees.length
+    );
 
-    if (data.lastId !== lastSavedId) {
+    if (isModifyingEmployeeList) {
       canSaveDataRef.current = true;
     }
   }, [data]);
